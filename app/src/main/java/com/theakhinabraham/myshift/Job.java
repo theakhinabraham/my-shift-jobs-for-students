@@ -2,13 +2,13 @@ package com.theakhinabraham.myshift;
 
 public class Job {
 
-    String roles, description, locality, requirements;
+    String role, description, locality, requirements;
     String salary;
 
     public Job(){}
 
-    public Job(String roles, String description, String salary, String locality, String requirements) {
-        this.roles = roles;
+    public Job(String role, String description, String salary, String locality, String requirements) {
+        this.role = role;
         this.description = description;
         this.salary = salary;
         this.locality = locality;
@@ -16,11 +16,11 @@ public class Job {
     }
 
     public String getRoles() {
-        return roles;
+        return role;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
+    public void setRoles(String role) {
+        this.role = role;
     }
 
     public String getDescription() {

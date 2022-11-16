@@ -34,11 +34,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Job job = jobArrayList.get(position);
 
-        holder.roles.setText(job.roles);
+        holder.role.setText(job.role);
         holder.description.setText(job.description);
         holder.salary.setText(String.valueOf(job.salary));
         holder.locality.setText(job.locality);
@@ -54,12 +54,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView roles, description, salary, locality, requirements;
+        TextView role, description, salary, locality, requirements;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            roles = itemView.findViewById(R.id.jobRoleDisplay);
+            role = itemView.findViewById(R.id.jobRoleDisplay);
             description = itemView.findViewById(R.id.jobDescDisplay);
             salary = itemView.findViewById(R.id.salaryDisplay);
             locality = itemView.findViewById(R.id.localityDisplay);
