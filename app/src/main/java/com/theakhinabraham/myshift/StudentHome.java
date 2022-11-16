@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentChange;
@@ -61,8 +62,9 @@ public class StudentHome extends AppCompatActivity {
         applyPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StudentHome.this, ApplyJob.class);
-                startActivity(intent);
+//                Intent intent = new Intent(StudentHome.this, ApplyJob.class);
+//                startActivity(intent);
+                Toast.makeText(StudentHome.this, "Applied for Job!", Toast.LENGTH_SHORT).show();
             }
         });
 
