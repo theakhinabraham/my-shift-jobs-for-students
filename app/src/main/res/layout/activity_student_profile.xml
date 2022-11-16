@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentProfile">
+
+    <TextView
+        android:id="@+id/studentProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="45dp"
+        android:text="Edit Profile"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/st_edAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="21"
+        app:layout_constraintStart_toEndOf="@+id/st_age"
+        app:layout_constraintTop_toBottomOf="@+id/st_edPassword" />
+
+    <TextView
+        android:id="@+id/st_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="58dp"
+        android:text="FULL NAME:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentProfile" />
+
+    <EditText
+        android:id="@+id/st_edPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="abc"
+        app:layout_constraintStart_toEndOf="@+id/st_password"
+        app:layout_constraintTop_toBottomOf="@+id/st_edUsername" />
+
+    <TextView
+        android:id="@+id/st_education"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="25dp"
+        android:text="EDUCATION:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/st_locality" />
+
+    <EditText
+        android:id="@+id/st_edName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Alex Mathew"
+        app:layout_constraintStart_toEndOf="@+id/st_name"
+        app:layout_constraintTop_toBottomOf="@+id/studentProfile" />
+
+    <TextView
+        android:id="@+id/st_locality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="25dp"
+        android:text="LOCALITY:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/st_age" />
+
+    <EditText
+        android:id="@+id/st_edUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="student"
+        app:layout_constraintStart_toEndOf="@+id/st_username"
+        app:layout_constraintTop_toBottomOf="@+id/st_edName" />
+
+    <TextView
+        android:id="@+id/st_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="27dp"
+        android:text="USERNAME:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/st_name" />
+
+    <TextView
+        android:id="@+id/st_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="25dp"
+        android:text="AGE:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/st_password" />
+
+    <TextView
+        android:id="@+id/st_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="22dp"
+        android:text="PASSWORD:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/st_username" />
+
+    <EditText
+        android:id="@+id/st_edEducation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="B.C.A."
+        app:layout_constraintStart_toEndOf="@+id/st_education"
+        app:layout_constraintTop_toBottomOf="@+id/st_edLocality" />
+
+    <EditText
+        android:id="@+id/st_edLocality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Kochi"
+        app:layout_constraintStart_toEndOf="@+id/st_locality"
+        app:layout_constraintTop_toBottomOf="@+id/st_edAge" />
+
+    <Button
+        android:id="@+id/st_saveBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="61dp"
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/st_edEducation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

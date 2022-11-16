@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "930318221180",
+    "project_id": "myshiftproject",
+    "storage_bucket": "myshiftproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930318221180:android:4c615b449b886b6c1daef9",
+        "android_client_info": {
+          "package_name": "com.theakhinabraham.myshift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930318221180-nuv79h6avdbd2rltjvh7a3suhoqrasvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARgQu-hQ0f6qfdYmEbbTzmdg1dTpE00TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930318221180-nuv79h6avdbd2rltjvh7a3suhoqrasvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
