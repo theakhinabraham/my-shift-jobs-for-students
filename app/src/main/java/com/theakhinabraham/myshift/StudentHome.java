@@ -58,7 +58,7 @@ public class StudentHome extends AppCompatActivity {
         applyPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StudentHome.this,ApplyJob.class);
+                Intent intent = new Intent(StudentHome.this, ApplyJob.class);
                 startActivity(intent);
             }
         });
@@ -74,6 +74,7 @@ public class StudentHome extends AppCompatActivity {
     }
 
     private void EventChangeListener() {
+
         db.collection("Jobs")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
