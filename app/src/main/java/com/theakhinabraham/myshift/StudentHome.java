@@ -12,13 +12,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StudentHome extends AppCompatActivity {
 
@@ -72,7 +75,6 @@ public class StudentHome extends AppCompatActivity {
         });
 
     }
-
     private void EventChangeListener() {
 
         db.collection("Jobs")

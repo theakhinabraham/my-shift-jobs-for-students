@@ -45,16 +45,17 @@ public class StoreOwnerHome extends AppCompatActivity {
         so_profileBtn = findViewById(R.id.so_profileBtn);
 
         recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
+
+        jobArrayList = new ArrayList<>();
+
+        myAdapter = new MyAdapter(StoreOwnerHome.this,jobArrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.hasFixedSize();
+        recyclerView.setAdapter(myAdapter);
 
         db = FirebaseFirestore.getInstance();
-        jobArrayList = new ArrayList<Job>();
-        myAdapter = new MyAdapter(StoreOwnerHome.this,jobArrayList);
 
         EventChangeListener();
-
-        recyclerView.setAdapter(myAdapter);
 
         addNewPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,23 +79,23 @@ public class StoreOwnerHome extends AppCompatActivity {
 
         db.collection("Jobs")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null){
-                    if(progressDialog.isShowing())
-                        progressDialog.dismiss();
-                    Log.e("Firestore error", error.getMessage());
-                    return;
-                }
-                for(DocumentChange dc : value.getDocumentChanges()){
-                    if(dc.getType() == DocumentChange.Type.ADDED){
-                        jobArrayList.add(dc.getDocument().toObject(Job.class));
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                jobArrayList.add(dc.getDocument().toObject(Job.class));
+                            }
+                            myAdapter.notifyDataSetChanged();
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+                        }
                     }
-                    myAdapter.notifyDataSetChanged();
-                    if(progressDialog.isShowing())
-                        progressDialog.dismiss();
-                    }
-                }
-            });
+                });
     }
 }

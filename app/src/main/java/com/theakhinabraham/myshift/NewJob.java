@@ -70,6 +70,8 @@ public class NewJob extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(NewJob.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(NewJob.this, StoreOwnerHome.class);
+                                    startActivity(intent);
                                     finish();
                                 }
                             })
