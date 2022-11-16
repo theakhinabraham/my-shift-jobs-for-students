@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cream"
     tools:context=".NewJob">
 
     <TextView
@@ -12,8 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="127dp"
         android:layout_marginTop="34dp"
+        android:layout_marginEnd="134dp"
         android:text="Apply for Job"
+        android:textColor="@color/gray"
         android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +28,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:hint="Job Title"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/applyJob" />
 
@@ -36,10 +46,15 @@
         android:layout_height="139dp"
         android:layout_marginStart="53dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Job Description"
         android:inputType="textMultiLine"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/role" />
 
@@ -49,10 +64,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:hint="Salary"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
@@ -62,10 +82,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
         android:layout_marginTop="13dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:hint="Locality"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/salary" />
 
@@ -75,10 +100,15 @@
         android:layout_height="112dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="11dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Requirements"
         android:inputType="textMultiLine"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locality" />
 
@@ -88,7 +118,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="22dp"
+        android:layout_marginEnd="56dp"
+        android:backgroundTint="@color/gray"
         android:text="Apply for Job"
+        android:textColor="@color/gold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requirements" />
 

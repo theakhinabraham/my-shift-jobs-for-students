@@ -5,6 +5,7 @@ public class Job {
     String role, description, locality, requirements;
     String salary;
 
+
     public Job(){}
 
     public Job(String role, String description, String salary, String locality, String requirements) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentProfile">
+android:background="@color/cream"    tools:context=".StudentProfile">
 
     <TextView
         android:id="@+id/studentProfile"
@@ -12,8 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="133dp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
         android:text="Edit Profile"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,12 +25,16 @@
         android:id="@+id/st_edAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="55dp"
         android:ems="10"
         android:inputType="number"
+        android:minHeight="48dp"
         android:text="21"
-        app:layout_constraintStart_toEndOf="@+id/st_age"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_edPassword" />
 
     <TextView
@@ -35,7 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
         android:layout_marginTop="58dp"
+        android:layout_marginEnd="12dp"
         android:text="FULL NAME:"
+        app:layout_constraintEnd_toStartOf="@+id/st_edName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studentProfile" />
 
@@ -43,11 +53,15 @@
         android:id="@+id/st_edPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="54dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
         android:text="abc"
-        app:layout_constraintStart_toEndOf="@+id/st_password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_edUsername" />
 
     <TextView
@@ -56,7 +70,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
         android:text="EDUCATION:"
+        app:layout_constraintEnd_toStartOf="@+id/st_edEducation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_locality" />
 
@@ -64,12 +80,16 @@
         android:id="@+id/st_edName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="54dp"
         android:ems="10"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:text="Alex Mathew"
-        app:layout_constraintStart_toEndOf="@+id/st_name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studentProfile" />
 
     <TextView
@@ -78,7 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="22dp"
         android:text="LOCALITY:"
+        app:layout_constraintEnd_toStartOf="@+id/st_edAge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_age" />
 
@@ -86,11 +108,15 @@
         android:id="@+id/st_edUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="54dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
         android:text="student"
-        app:layout_constraintStart_toEndOf="@+id/st_username"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_edName" />
 
     <TextView
@@ -99,7 +125,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
         android:layout_marginTop="27dp"
+        android:layout_marginEnd="13dp"
         android:text="USERNAME:"
+        app:layout_constraintEnd_toStartOf="@+id/st_edUsername"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_name" />
 
@@ -109,7 +137,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="59dp"
         android:text="AGE:"
+        app:layout_constraintEnd_toStartOf="@+id/st_edAge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_password" />
 
@@ -118,8 +148,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="13dp"
         android:text="PASSWORD:"
+        app:layout_constraintEnd_toStartOf="@+id/st_edPassword"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_username" />
 
@@ -127,22 +160,30 @@
         android:id="@+id/st_edEducation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="55dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:text="B.C.A."
-        app:layout_constraintStart_toEndOf="@+id/st_education"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_edLocality" />
 
     <EditText
         android:id="@+id/st_edLocality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
+        android:layout_marginEnd="54dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
         android:text="Kochi"
-        app:layout_constraintStart_toEndOf="@+id/st_locality"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_edAge" />
 
     <Button
@@ -151,7 +192,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="61dp"
+        android:layout_marginEnd="56dp"
         android:text="Save"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/gold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/st_edEducation" />
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cream"
     tools:context=".RegisterActivity">
 
     <TextView
@@ -12,8 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="35dp"
+        android:layout_marginEnd="151dp"
         android:text="Register"
         android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +28,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="95dp"
         android:layout_marginTop="51dp"
+        android:layout_marginEnd="106dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
+        android:background="@drawable/ed_text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -36,10 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
         android:layout_marginTop="56dp"
+        android:layout_marginEnd="103dp"
         android:ems="10"
         android:hint="Email ID"
         android:inputType="textEmailAddress"
+        android:background="@drawable/ed_text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -49,10 +64,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginTop="70dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/ed_text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
@@ -62,7 +82,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
         android:layout_marginTop="108dp"
+        android:layout_marginEnd="147dp"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/gold"
         android:text="REGISTER"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordReg" />
 

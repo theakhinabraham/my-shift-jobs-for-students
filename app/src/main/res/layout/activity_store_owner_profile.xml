@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cream"
     tools:context=".StoreOwnerProfile">
 
     <TextView
@@ -12,8 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
         android:layout_marginTop="43dp"
+        android:layout_marginEnd="133dp"
         android:text="Edit Profile"
         android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="196dp"
+        android:layout_marginEnd="16dp"
         android:text="COMPANY:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="29dp"
+        android:layout_marginEnd="8dp"
         android:text="USERNAME:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soUsername"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/so_name" />
 
@@ -43,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="37dp"
+        android:layout_marginEnd="9dp"
         android:text="PASSWORD:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/so_username" />
 
@@ -53,7 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="18dp"
         android:text="LOCALITY:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soLocality"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/so_password" />
 
@@ -63,7 +76,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="71dp"
+        android:layout_marginEnd="55dp"
         android:text="Save"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/gold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_soLocality" />
 
@@ -71,26 +88,32 @@
         android:id="@+id/ed_soName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Magic World"
-        app:layout_constraintStart_toEndOf="@+id/so_name"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storeOwnerProfile" />
 
     <EditText
         android:id="@+id/ed_soUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="7dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="storeowner"
-        app:layout_constraintStart_toEndOf="@+id/so_username"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_soName" />
 
 
@@ -98,26 +121,32 @@
         android:id="@+id/ed_soPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
         android:layout_marginTop="9dp"
+        android:layout_marginEnd="59dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:text="abc"
-        app:layout_constraintStart_toEndOf="@+id/so_password"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_soUsername" />
 
     <EditText
         android:id="@+id/ed_soLocality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="MainTown 233, India"
-        app:layout_constraintStart_toEndOf="@+id/so_locality"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_soPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

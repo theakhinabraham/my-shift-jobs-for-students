@@ -44,7 +44,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.locality.setText(job.locality);
         holder.requirements.setText(job.requirements);
 
-
     }
 
     @Override

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cream"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,8 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="39dp"
+        android:layout_marginEnd="151dp"
         android:text="My Shift"
+        android:padding="5dp"
         android:textSize="30sp"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +29,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="132dp"
+        android:layout_marginEnd="56dp"
         android:ems="10"
         android:hint="Email ID"
+        android:background="@drawable/ed_text"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
@@ -36,10 +47,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="61dp"
+        android:layout_marginEnd="56dp"
         android:ems="10"
         android:hint="Password"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/ed_text"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
@@ -49,7 +65,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="145dp"
         android:layout_marginTop="94dp"
+        android:layout_marginEnd="146dp"
         android:text="Login"
+        android:textColor="@color/gold"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordReg" />
 
@@ -59,7 +79,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="145dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="146dp"
         android:text="Register"
+        android:textColor="@color/gold"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
