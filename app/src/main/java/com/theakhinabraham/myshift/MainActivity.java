@@ -15,6 +15,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     Button loginBtn, registerBtn;
 
     private FirebaseAuth auth;
+    private FirebaseFirestore db;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         registerBtn = findViewById(R.id.registerReg);
 
         auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,19 +74,17 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                //TODO: Redirect to Activity based on Login Details
-
                 auth.signInWithEmailAndPassword(email_id, password_id)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+                                    CollectionReference studentDB = db.collection("Student");
+                                    CollectionReference companyDB = db.collection("Company");
 
-                                    //TODO: ADD CONDITION TO MOVE TO CORRECT ACTIVITY
+                                    //TODO: CHECK IF USER IS STUDENT OR COMPANY
+                                    //TODO: REDIRECT TO RESPECTIVE PAGE
 
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -79,5 +92,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-

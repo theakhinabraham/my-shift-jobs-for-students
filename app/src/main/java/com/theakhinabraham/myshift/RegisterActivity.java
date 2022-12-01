@@ -82,10 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 else{
-                    //TODO: MAKE CHANGES BELOW TO REDIRECT TO ACTIVITY
                     if (studentRadioBtn.isChecked()) {
-                        isStudent = true;
-                        isCompany = false;
                         Map<String, Object> student = new HashMap<>();
                         student.put("fullName", full_name);
                         student.put("username", email_id);
@@ -114,15 +111,12 @@ public class RegisterActivity extends AppCompatActivity {
                                 });
                     }
                     else if (companyRadioBtn.isChecked()) {
-                        isStudent = false;
-                        isCompany = true;
                         Map<String, Object> company = new HashMap<>();
                         company.put("fullName", full_name);
                         company.put("username", email_id);
                         company.put("password", password_id);
-                        company.put("age", ageText);
                         company.put("locality", localityText);
-                        company.put("isStudent", true);
+                        company.put("isStudent", false);
 
                         // Add a new document with a generated ID
                         db.collection("Company")
