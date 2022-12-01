@@ -2,18 +2,28 @@ package com.theakhinabraham.myshift;
 
 public class StudentData {
     String fullName, username, password, age, locality, education;
+    Boolean isStudent = false;
 
-    public StudentData(String fullName, String username, String password, String age, String locality, String education) {
+    public StudentData(String fullName, String username, String password, String age, String locality, String education, Boolean isStudent) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.age = age;
         this.locality = locality;
         this.education = education;
+        this.isStudent = isStudent;
     }
 
     public StudentData(String fullName) {
 
+    }
+
+    public Boolean getStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(Boolean student) {
+        isStudent = student;
     }
 
     public String getFullName() {

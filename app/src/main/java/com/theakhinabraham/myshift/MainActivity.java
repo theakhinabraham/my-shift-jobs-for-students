@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                //TODO: Redirect to Activity based on Login Details
+
                 auth.signInWithEmailAndPassword(email_id, password_id)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override

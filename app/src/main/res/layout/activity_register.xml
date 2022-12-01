@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginTop="51dp"
-        android:layout_marginEnd="100dp"
         android:background="@drawable/ed_text"
         android:ems="10"
         android:hint="Full Name"
@@ -36,7 +35,6 @@
         android:minHeight="48dp"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -46,7 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
         android:background="@drawable/ed_text"
         android:ems="10"
         android:hint="Email ID"
@@ -54,8 +51,6 @@
         android:minHeight="48dp"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -65,7 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="100dp"
         android:background="@drawable/ed_text"
         android:ems="10"
         android:hint="Password"
@@ -73,8 +67,6 @@
         android:minHeight="48dp"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
@@ -84,13 +76,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="100dp"
+        android:background="@drawable/ed_text"
         android:ems="10"
+        android:hint="Locality"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:background="@drawable/ed_text"
-        android:text="Locality"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColorHint="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordReg" />
 
@@ -101,12 +92,11 @@
         android:layout_marginStart="101dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/ed_text"
-        android:layout_marginEnd="100dp"
         android:ems="10"
+        android:hint="Age"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Age"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColorHint="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locality" />
 

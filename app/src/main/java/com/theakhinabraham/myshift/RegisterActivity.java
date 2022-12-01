@@ -13,10 +13,16 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -57,35 +63,93 @@ public class RegisterActivity extends AppCompatActivity {
                 ageText = age.getText().toString();
                 localityText = locality.getText().toString();
 
-                if (studentRadioBtn.isChecked()) {
-                    isStudent = true;
-                    isCompany = false;
+                //AUTHENTICATION
+
+                auth.createUserWithEmailAndPassword(email_id, password_id).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Registration Failed!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                if(full_name.isEmpty() || email_id.isEmpty() || password_id.isEmpty() || ageText.isEmpty() || localityText.isEmpty()){
+                    Toast.makeText(RegisterActivity.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                    //TODO: MAKE CHANGES BELOW TO REDIRECT TO ACTIVITY
+                    if (studentRadioBtn.isChecked()) {
+                        isStudent = true;
+                        isCompany = false;
+                        Map<String, Object> student = new HashMap<>();
+                        student.put("fullName", full_name);
+                        student.put("username", email_id);
+                        student.put("password", password_id);
+                        student.put("age", ageText);
+                        student.put("locality", localityText);
+                        student.put("isStudent", true);
+
+                        // Add a new document with a generated ID
+                        db.collection("Student")
+                                .add(student)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(RegisterActivity.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(RegisterActivity.this, StudentHome.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(RegisterActivity.this, "Please try again!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                    else if (companyRadioBtn.isChecked()) {
+                        isStudent = false;
+                        isCompany = true;
+                        Map<String, Object> company = new HashMap<>();
+                        company.put("fullName", full_name);
+                        company.put("username", email_id);
+                        company.put("password", password_id);
+                        company.put("age", ageText);
+                        company.put("locality", localityText);
+                        company.put("isStudent", true);
+
+                        // Add a new document with a generated ID
+                        db.collection("Company")
+                                .add(company)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(RegisterActivity.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(RegisterActivity.this, StoreOwnerHome.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(RegisterActivity.this, "Please try again!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                    else {
+                        isStudent = false;
+                        isCompany = false;
+                        Toast.makeText(RegisterActivity.this, "Please select Student/Company", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
-                else if (companyRadioBtn.isChecked()) {
-                    isStudent = false;
-                    isCompany = true;
-                }
-                else {
-                    isStudent = false;
-                    isCompany = false;
-                    Toast.makeText(RegisterActivity.this, "Please select Student/Company", Toast.LENGTH_SHORT).show();
-                }
-
-                auth.createUserWithEmailAndPassword(email_id, password_id)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                }
-                                else {
-                                    Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
             }
 
             });
