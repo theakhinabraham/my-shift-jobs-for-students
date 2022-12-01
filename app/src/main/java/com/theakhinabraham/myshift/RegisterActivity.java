@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText fullName, emailReg, passwordReg;
+    EditText fullName, emailReg, passwordReg, age, locality;
     Button registerReg;
     RadioButton studentRadioBtn, companyRadioBtn;
 
@@ -38,6 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
         registerReg = findViewById(R.id.registerReg);
         studentRadioBtn = findViewById(R.id.studentRadioBtn);
         companyRadioBtn = findViewById(R.id.companyRadioBtn);
+        age = findViewById(R.id.age);
+        locality = findViewById(R.id.locality);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -45,13 +47,15 @@ public class RegisterActivity extends AppCompatActivity {
         registerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String full_name, email_id, password_id;
+                String full_name, email_id, password_id, ageText, localityText;
                 boolean isStudent = false;
                 boolean isCompany = false;
 
                 full_name = fullName.getText().toString();
                 email_id = emailReg.getText().toString();
                 password_id = passwordReg.getText().toString();
+                ageText = age.getText().toString();
+                localityText = locality.getText().toString();
 
                 if (studentRadioBtn.isChecked()) {
                     isStudent = true;
