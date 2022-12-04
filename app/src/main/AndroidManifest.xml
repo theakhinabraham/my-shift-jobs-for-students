@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyShift"
         tools:targetApi="31">
         <activity
+            android:name=".AppliedStudents"
+            android:exported="false" />
+        <activity
             android:name=".StudentProfile"
             android:exported="false" />
         <activity

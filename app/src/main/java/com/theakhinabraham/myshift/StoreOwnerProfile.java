@@ -13,7 +13,9 @@ public class StoreOwnerProfile extends AppCompatActivity {
 
     EditText so_edName, so_edUsername, so_edPassword, so_edLocality;
     Button so_saveBtn;
-    
+
+    //TODO: EDIT UI
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,7 @@ public class StoreOwnerProfile extends AppCompatActivity {
         so_saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO: UPDATE FIRESTORE & DISPLAY UPDATED DATA
                 Toast.makeText(StoreOwnerProfile.this, "Data Saved!", Toast.LENGTH_SHORT).show();
                 finish();
             }

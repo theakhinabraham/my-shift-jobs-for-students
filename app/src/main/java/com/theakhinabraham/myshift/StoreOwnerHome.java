@@ -31,6 +31,9 @@ public class StoreOwnerHome extends AppCompatActivity {
 
     Button addNewPostBtn, so_profileBtn;
 
+    //TODO: EDIT UI
+    //TODO: ADD BUTTON TO VIEW APPLIED STUDENTS
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

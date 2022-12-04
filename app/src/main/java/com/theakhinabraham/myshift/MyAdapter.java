@@ -21,7 +21,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.jobArrayList = jobArrayList;
     }
 
-    public MyAdapter() {    
+    public MyAdapter(StoreOwnerHome storeOwnerHome, ArrayList<Job> jobArrayList) {
+
     }
 
     @NonNull

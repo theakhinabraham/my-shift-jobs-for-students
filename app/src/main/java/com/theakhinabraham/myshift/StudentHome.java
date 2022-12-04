@@ -34,6 +34,8 @@ public class StudentHome extends AppCompatActivity {
 
     Button applyPostBtn, st_profileBtn;
 
+    //TODO: EDIT UI
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class StudentHome extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         jobArrayList = new ArrayList<Job>();
-        myAdapter = new MyAdapter(StudentHome.this,jobArrayList);
+        myAdapter = new MyAdapter(StudentHome.this, jobArrayList);
 
         EventChangeListener();
 
