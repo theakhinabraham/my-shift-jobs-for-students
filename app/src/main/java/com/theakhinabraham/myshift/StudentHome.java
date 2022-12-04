@@ -34,7 +34,6 @@ public class StudentHome extends AppCompatActivity {
 
     Button applyPostBtn, st_profileBtn;
 
-    //TODO: EDIT UI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     String userId;
 
-    //TODO: EDIT UI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

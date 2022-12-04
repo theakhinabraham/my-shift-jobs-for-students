@@ -7,8 +7,6 @@ import android.os.Bundle;
 public class AppliedStudents extends AppCompatActivity {
 
 
-    //TODO: EDIT UI
-    //TODO: RECYCLERVIEW DISPLAY APPLIED STUDENTS
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -28,8 +28,7 @@ public class StudentProfile extends AppCompatActivity {
 
     private FirebaseFirestore db;
 
-    //TODO: EDIT UI
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

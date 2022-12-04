@@ -14,7 +14,6 @@ public class StoreOwnerProfile extends AppCompatActivity {
     EditText so_edName, so_edUsername, so_edPassword, so_edLocality;
     Button so_saveBtn;
 
-    //TODO: EDIT UI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

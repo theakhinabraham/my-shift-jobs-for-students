@@ -33,7 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
 
-    //TODO: EDIT UI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

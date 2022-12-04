@@ -14,7 +14,6 @@ public class ApplyJob extends AppCompatActivity {
     EditText role, description, salary, locality, requirements;
     Button applyJobBtn;
 
-    //TODO: EDIT UI
     //TODO: MAKE RECYCLER VIEW SELECTABLE
     //TODO: ADD DATA TO APPLIED COLLECTION
 

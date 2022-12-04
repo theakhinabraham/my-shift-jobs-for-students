@@ -25,7 +25,6 @@ public class NewJob extends AppCompatActivity {
     EditText role, description, salary, locality, requirements;
     Button postJobBtn;
 
-    //TODO: EDIT UI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
