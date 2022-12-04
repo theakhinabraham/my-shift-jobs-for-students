@@ -9,31 +9,27 @@
 
     <Button
         android:id="@+id/addNewPostBtn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="170dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="21dp"
         android:backgroundTint="@color/gray"
         android:text="New Post"
         android:textColor="@color/gold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/so_profileBtn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="56dp"
-        android:backgroundTint="@color/gold"
-        android:text="Edit Store Owner Profile"
-        android:textColor="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addNewPostBtn" />
+        android:layout_width="170dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="21dp"
+        android:backgroundTint="@color/gray"
+        android:text="Profile"
+        android:textColor="@color/gold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -59,5 +55,21 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/applicationBtn"
+        android:layout_width="359dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="7dp"
+        android:backgroundTint="@color/gold"
+        android:text="job applications"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/addNewPostBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
