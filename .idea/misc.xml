@@ -6,6 +6,7 @@
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/drawable/border.xml" value="0.261" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/drawable/ed_text.xml" value="0.2755" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/drawable/text_view.xml" value="0.2755" />
+        <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_applied_students.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_apply_job.xml" value="0.264" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_new_job.xml" value="0.264" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_store_owner_profile.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_student_home.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/activity_student_profile.xml" value="0.264" />
+        <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/applied.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Akhin Abraham/AndroidStudioProjects/MyShift/app/src/main/res/layout/job.xml" value="0.2734375" />
       </map>
     </option>

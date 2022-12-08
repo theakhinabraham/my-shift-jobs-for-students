@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -29,10 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
     EditText fullName, emailReg, passwordReg, age, locality;
     Button registerReg;
     RadioButton studentRadioBtn, companyRadioBtn;
+    String userId;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        CollectionReference Student = db.collection("Student");
+        CollectionReference Company = db.collection("Company");
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
 
         registerReg.setOnClickListener(new View.OnClickListener() {
             @Override
