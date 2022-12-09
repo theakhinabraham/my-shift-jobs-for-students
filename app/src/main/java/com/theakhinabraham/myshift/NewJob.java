@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,7 +70,7 @@ public class NewJob extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(NewJob.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(NewJob.this, StoreOwnerHome.class);
+                                    Intent intent = new Intent(NewJob.this, CompanyHome.class);
                                     startActivity(intent);
                                     finish();
                                 }

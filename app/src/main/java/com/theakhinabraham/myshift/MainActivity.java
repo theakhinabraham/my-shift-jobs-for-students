@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private DatabaseReference mDatabase;
-    String userId;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        userId = user.getUid();
+        user = auth.getCurrentUser();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +74,6 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                //TODO: CHANGE
-                String studentUsername = mDatabase.child("Student").child(userId).child("username").toString();
-                String studentPassword = mDatabase.child("Student").child(userId).child("password").toString();
-                String companyUsername = mDatabase.child("Company").child(userId).child("username").toString();
-                String companyPassword = mDatabase.child("Company").child(userId).child("password").toString();
-
                 auth.signInWithEmailAndPassword(email_id, password_id)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -90,23 +81,25 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful()){
                                     //TODO: SIGN IN AS STUDENT
                                     //IF EMAIL & PASSWORD MATCHES
-                                    DocumentReference docRef = db.collection("Student").document("username");
-                                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                            if (task.isSuccessful()) {
-                                                DocumentSnapshot document = task.getResult();
-                                                if (document.exists()) {
-                                                    Toast.makeText(MainActivity.this, document.getData().toString(), Toast.LENGTH_SHORT).show();
+                                    db.collection("Student")
+                                            .whereEqualTo("username", email_id)
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                                            Intent intentStudent = new Intent(MainActivity.this, StudentHome.class);
+                                                            startActivity(intentStudent);
+                                                            finish();
+                                                            Toast.makeText(MainActivity.this, "SIGNED IN - STUDENT", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(MainActivity.this, "FAILED!", Toast.LENGTH_SHORT).show();
+                                                    }
                                                 }
-                                                else {
-                                                    Toast.makeText(MainActivity.this, "DOCUMENT DOESN'T EXIST", Toast.LENGTH_SHORT).show();
-                                                }
-                                            } else {
-                                                Toast.makeText(MainActivity.this, "TASK NOT SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
+                                            });
+
                                 }
                             }
                         });
@@ -137,6 +130,24 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful()){
                                     //TODO: SIGN IN AS COMPANY
                                     //VALIDATE EMAIL & PASSWORD
+                                    db.collection("Company")
+                                            .whereEqualTo("username", email_id)
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                                            Intent intentCompany = new Intent(MainActivity.this, CompanyHome.class);
+                                                            startActivity(intentCompany);
+                                                            finish();
+                                                            Toast.makeText(MainActivity.this, "SIGNED IN - COMPANY", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(MainActivity.this, "FAILED!", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
                                 }
                             }
                         });
@@ -145,4 +156,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser != null){
+            currentUser.reload();
+        }
+    }
+
 }

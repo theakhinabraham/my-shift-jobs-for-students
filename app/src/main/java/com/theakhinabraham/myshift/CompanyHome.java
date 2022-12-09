@@ -11,67 +11,77 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class StoreOwnerHome extends AppCompatActivity {
+public class CompanyHome extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     ArrayList<Job> jobArrayList;
     MyAdapter myAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
 
-    Button addNewPostBtn, so_profileBtn;
-
-    //TODO: ADD BUTTON TO VIEW APPLIED STUDENTS
+    Button applicationBtn, addNewPostBtn, so_profileBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store_owner_home);
+        setContentView(R.layout.activity_company_home);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Fetching Data...");
         progressDialog.show();
 
+        applicationBtn = findViewById(R.id.applicationBtn);
         addNewPostBtn = findViewById(R.id.addNewPostBtn);
         so_profileBtn = findViewById(R.id.so_profileBtn);
 
         recyclerView = findViewById(R.id.recyclerview);
-
-        jobArrayList = new ArrayList<>();
-
-        myAdapter = new MyAdapter(StoreOwnerHome.this,jobArrayList);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.hasFixedSize();
-        recyclerView.setAdapter(myAdapter);
 
         db = FirebaseFirestore.getInstance();
+        jobArrayList = new ArrayList<Job>();
+        myAdapter = new MyAdapter(CompanyHome.this, jobArrayList);
 
         EventChangeListener();
+
+        recyclerView.setAdapter(myAdapter);
 
         addNewPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StoreOwnerHome.this, NewJob.class);
-                startActivity(intent);
+                Intent newPostIntent = new Intent(CompanyHome.this, NewJob.class);
+                startActivity(newPostIntent);
+                finish();
+            }
+        });
+
+        applicationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CompanyHome.this, "APPLICATION BUTTON WORKING", Toast.LENGTH_SHORT).show();
             }
         });
 
         so_profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(StoreOwnerHome.this, StoreOwnerProfile.class);
-                startActivity(i);
+                Intent goToCompanyProfile = new Intent(CompanyHome.this, CompanyProfile.class);
+                startActivity(goToCompanyProfile);
+                finish();
             }
         });
 

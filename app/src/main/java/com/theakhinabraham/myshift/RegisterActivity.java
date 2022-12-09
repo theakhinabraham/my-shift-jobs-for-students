@@ -54,9 +54,6 @@ public class RegisterActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        CollectionReference Student = db.collection("Student");
-        CollectionReference Company = db.collection("Company");
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
 
@@ -87,12 +84,15 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-                if(full_name.isEmpty() || email_id.isEmpty() || password_id.isEmpty() || ageText.isEmpty() || localityText.isEmpty()){
-                    Toast.makeText(RegisterActivity.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(full_name) || TextUtils.isEmpty(email_id) || TextUtils.isEmpty(password_id) || TextUtils.isEmpty(ageText) || TextUtils.isEmpty(localityText)) {
+                    Toast.makeText(getApplicationContext(), "Please enter all details...", Toast.LENGTH_LONG).show();
+                    return;
                 }
 
                 else{
                     if (studentRadioBtn.isChecked()) {
+                        CollectionReference Student = db.collection("Student");
+
                         Map<String, Object> student = new HashMap<>();
                         student.put("fullName", full_name);
                         student.put("username", email_id);
@@ -100,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                         student.put("age", ageText);
                         student.put("locality", localityText);
                         student.put("isStudent", true);
+                        Student.document(email_id);
 
                         // Add a new document with a generated ID
                         db.collection("Student")
@@ -108,9 +109,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(RegisterActivity.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(RegisterActivity.this, StudentHome.class);
-                                        startActivity(intent);
-                                        finish();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -121,12 +119,15 @@ public class RegisterActivity extends AppCompatActivity {
                                 });
                     }
                     else if (companyRadioBtn.isChecked()) {
+                        CollectionReference Company = db.collection("Company");
+
                         Map<String, Object> company = new HashMap<>();
                         company.put("fullName", full_name);
                         company.put("username", email_id);
                         company.put("password", password_id);
                         company.put("locality", localityText);
                         company.put("isStudent", false);
+                        Company.document(email_id);
 
                         // Add a new document with a generated ID
                         db.collection("Company")
@@ -135,9 +136,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(RegisterActivity.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(RegisterActivity.this, StoreOwnerHome.class);
-                                        startActivity(intent);
-                                        finish();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {

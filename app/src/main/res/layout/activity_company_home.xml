@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/cream"
     android:layout_height="match_parent"
-    tools:context=".StoreOwnerHome">
+    tools:context=".CompanyHome">
 
     <Button
         android:id="@+id/addNewPostBtn"

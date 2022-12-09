@@ -21,7 +21,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.jobArrayList = jobArrayList;
     }
 
-    public MyAdapter(StoreOwnerHome storeOwnerHome, ArrayList<Job> jobArrayList) {
+    public MyAdapter(CompanyHome context, ArrayList<Job> jobArrayList) {
 
     }
 
@@ -48,6 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
+    //TODO: FIX
     public int getItemCount() {
         return jobArrayList.size();
     }

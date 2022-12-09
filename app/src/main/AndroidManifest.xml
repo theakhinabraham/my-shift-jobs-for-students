@@ -22,7 +22,7 @@
             android:name=".StudentProfile"
             android:exported="false" />
         <activity
-            android:name=".StoreOwnerProfile"
+            android:name=".CompanyProfile"
             android:exported="false" />
         <activity
             android:name=".NewJob"
@@ -34,7 +34,7 @@
             android:name=".StudentHome"
             android:exported="false" />
         <activity
-            android:name=".StoreOwnerHome"
+            android:name=".CompanyHome"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
