@@ -22,7 +22,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<Job, MyAdapter.MyViewHol
         holder.jobRoleDisplay.setText(job.role);
         holder.jobDescDisplay.setText(job.description);
         holder.salaryDisplay.setText(job.salary);
-        holder.localityDisplay.setText(job.locality);
+        holder.localityDisplay.setText(job.address);
         holder.requirementsDisplay.setText(job.requirements);
     }
 
