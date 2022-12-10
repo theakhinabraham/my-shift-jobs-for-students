@@ -1,8 +1,5 @@
 package com.theakhinabraham.myshift;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -20,9 +22,12 @@ import java.util.Map;
 
 public class NewJob extends AppCompatActivity {
 
-    private FirebaseFirestore db;
-    EditText role, description, salary, locality, requirements;
+    EditText role, description, salary, address, requirements;
     Button postJobBtn;
+    String userId;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth;
+    FirebaseUser user;
 
 
     @Override
@@ -33,12 +38,14 @@ public class NewJob extends AppCompatActivity {
         role = findViewById(R.id.role);
         description = findViewById(R.id.description);
         salary = findViewById(R.id.salary);
-        locality = findViewById(R.id.locality);
+        address = findViewById(R.id.locality);
         requirements = findViewById(R.id.requirements);
         postJobBtn = findViewById(R.id.postJobBtn);
 
         //Initializing Firebase
-        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        userId = user.getUid();
 
         postJobBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,10 +54,10 @@ public class NewJob extends AppCompatActivity {
                 String nj_role = role.getText().toString();
                 String nj_description = description.getText().toString();
                 String nj_salary = salary.getText().toString();
-                String nj_locality = locality.getText().toString();
+                String nj_address = address.getText().toString();
                 String nj_requirements = requirements.getText().toString();
 
-                if(nj_role.isEmpty() || nj_description.isEmpty() || nj_salary.isEmpty() || nj_locality.isEmpty() || nj_requirements.isEmpty()){
+                if(nj_role.isEmpty() || nj_description.isEmpty() || nj_salary.isEmpty() || nj_address.isEmpty() || nj_requirements.isEmpty()){
                     Toast.makeText(NewJob.this, "Please enter all fields!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -60,8 +67,9 @@ public class NewJob extends AppCompatActivity {
                     job.put("role", nj_role);
                     job.put("description", nj_description);
                     job.put("salary", nj_salary);
-                    job.put("locality", nj_locality);
+                    job.put("address", nj_address);
                     job.put("requirements", nj_requirements);
+                    job.put("isAvailable", true);
 
                     // Add a new document with a generated ID
                     db.collection("Jobs")

@@ -1,9 +1,5 @@
 package com.theakhinabraham.myshift;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -54,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        user = auth.getCurrentUser();
         userId = user.getUid();
 
         registerReg.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                         student.put("age", ageText);
                         student.put("locality", localityText);
                         student.put("isStudent", true);
+                        student.put("userID", userId);
                         Student.document(email_id);
 
                         // Add a new document with a generated ID
@@ -127,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                         company.put("password", password_id);
                         company.put("locality", localityText);
                         company.put("isStudent", false);
+                        company.put("userID", userId);
                         Company.document(email_id);
 
                         // Add a new document with a generated ID

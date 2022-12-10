@@ -1,38 +1,33 @@
 package com.theakhinabraham.myshift;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class StudentHome extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ArrayList<Job> jobArrayList;
-    MyAdapter myAdapter;
-    FirebaseFirestore db;
-    ProgressDialog progressDialog;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth;
+    FirebaseUser user;
+    private CollectionReference jobRef = db.collection("Jobs");
+    private MyAdapter myAdapter;
+    String userId;
 
     Button applyPostBtn, st_profileBtn;
+
 
 
     @Override
@@ -40,25 +35,14 @@ public class StudentHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Fetching Data...");
-        progressDialog.show();
+        setUpRecyclerView();
 
         applyPostBtn = findViewById(R.id.st_applyJobBtn);
         st_profileBtn = findViewById(R.id.st_editProfile);
 
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        db = FirebaseFirestore.getInstance();
-        jobArrayList = new ArrayList<Job>();
-        myAdapter = new MyAdapter(StudentHome.this, jobArrayList);
-
-        EventChangeListener();
-
-        recyclerView.setAdapter(myAdapter);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        userId = user.getUid();
 
         applyPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,27 +62,32 @@ public class StudentHome extends AppCompatActivity {
         });
 
     }
-    private void EventChangeListener() {
 
-        db.collection("Jobs")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null){
-                            if(progressDialog.isShowing())
-                                progressDialog.dismiss();
-                            Log.e("Firestore error", error.getMessage());
-                            return;
-                        }
-                        for(DocumentChange dc : value.getDocumentChanges()){
-                            if(dc.getType() == DocumentChange.Type.ADDED){
-                                jobArrayList.add(dc.getDocument().toObject(Job.class));
-                            }
-                            myAdapter.notifyDataSetChanged();
-                            if(progressDialog.isShowing())
-                                progressDialog.dismiss();
-                        }
-                    }
-                });
+    private void setUpRecyclerView() {
+        Query query = jobRef.whereEqualTo("isAvailable", true);
+
+        FirestoreRecyclerOptions<Job> options = new FirestoreRecyclerOptions.Builder<Job>()
+                .setQuery(query, Job.class)
+                .build();
+
+        myAdapter = new MyAdapter(options);
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(myAdapter);
     }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        myAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        myAdapter.stopListening();
+    }
+
 }

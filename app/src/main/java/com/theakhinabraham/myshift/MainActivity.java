@@ -1,8 +1,5 @@
 package com.theakhinabraham.myshift;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,13 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -26,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     EditText email, password;
     Button loginStudentBtn, loginCompanyBtn, registerBtn;
+    String userId;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-    private DatabaseReference mDatabase;
     private FirebaseUser user;
 
     @Override
@@ -46,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
         user = auth.getCurrentUser();
+        userId = user.getUid();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                                                             Intent intentStudent = new Intent(MainActivity.this, StudentHome.class);
                                                             startActivity(intentStudent);
                                                             finish();
-                                                            Toast.makeText(MainActivity.this, "SIGNED IN - STUDENT", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(MainActivity.this, "SIGNED IN - STUDENT" + userId, Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
                                                         Toast.makeText(MainActivity.this, "FAILED!", Toast.LENGTH_SHORT).show();
@@ -141,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                                                             Intent intentCompany = new Intent(MainActivity.this, CompanyHome.class);
                                                             startActivity(intentCompany);
                                                             finish();
-                                                            Toast.makeText(MainActivity.this, "SIGNED IN - COMPANY", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(MainActivity.this, "SIGNED IN - COMPANY" + userId, Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
                                                         Toast.makeText(MainActivity.this, "FAILED!", Toast.LENGTH_SHORT).show();
