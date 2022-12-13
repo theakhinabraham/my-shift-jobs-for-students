@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                                                             Intent intentStudent = new Intent(MainActivity.this, StudentHome.class);
                                                             startActivity(intentStudent);
                                                             finish();
-                                                            Toast.makeText(MainActivity.this, "SIGNED IN - STUDENT" + userId, Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(MainActivity.this, "SIGNED IN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
                                                         Toast.makeText(MainActivity.this, "FAILED!", Toast.LENGTH_SHORT).show();
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                                                             Intent intentCompany = new Intent(MainActivity.this, CompanyHome.class);
                                                             startActivity(intentCompany);
                                                             finish();
-                                                            Toast.makeText(MainActivity.this, "SIGNED IN - COMPANY" + userId, Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(MainActivity.this, "SIGNED IN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
                                                         Toast.makeText(MainActivity.this, "FAILED!", Toast.LENGTH_SHORT).show();

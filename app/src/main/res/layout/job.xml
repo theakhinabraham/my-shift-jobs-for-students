@@ -14,19 +14,21 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/ed_text" >
+        android:background="@drawable/border" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Job Role: "
+                android:text="Job Role"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -37,27 +39,31 @@
                 android:text="Frontend Developer"
                 android:textSize="20sp"
                 android:textColor="@color/black"
+                android:gravity="center"
                 android:id="@+id/jobRoleDisplay" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
             android:paddingBottom="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Job Desciption: "
+                android:text="Job Desciption"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Develop, Design, Build reusable libraries"
                 android:textSize="20sp"
                 android:textColor="@color/black"
@@ -65,16 +71,18 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
             android:paddingBottom="5dp">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salary: "
+                android:text="Salary"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -83,22 +91,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12000"
+                android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:id="@+id/salaryDisplay" />
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
             android:paddingBottom="5dp">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Locality: "
+                android:text="Locality"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -107,23 +120,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kochi"
+                android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:id="@+id/localityDisplay" />
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
             android:paddingBottom="5dp">
 
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Requirements: "
+                android:text="Requirements"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -133,6 +149,7 @@
                 android:layout_height="wrap_content"
                 android:text="B.C.A"
                 android:textSize="20sp"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:id="@+id/requirementsDisplay" />
 

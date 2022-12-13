@@ -7,6 +7,7 @@
     android:background="@color/cream"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -32,10 +33,12 @@
         android:layout_marginEnd="56dp"
         android:ems="10"
         android:hint="Email ID"
-        android:background="@drawable/ed_text"
-        android:textColorHint="@color/gray"
         android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/border"
+        android:elevation="10dp"
         android:inputType="textEmailAddress"
+        android:gravity="center_horizontal"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,11 +51,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="56dp"
+        android:gravity="center_horizontal"
         android:ems="10"
         android:hint="Password"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
-        android:background="@drawable/ed_text"
+        android:background="@drawable/border"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"

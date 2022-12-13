@@ -11,6 +11,9 @@
     <color name="cream">#FFFFEFEF</color>
     <color name="gray">#FF272e2a</color>
 
-
+    <color name="text_color">#1E4175</color>
+    <color name="background_color">#ecf0f3</color>
+    <color name="highlight">#ffffff</color>
+    <color name="shadow_color">#d9dbde</color>
 
 </resources>
