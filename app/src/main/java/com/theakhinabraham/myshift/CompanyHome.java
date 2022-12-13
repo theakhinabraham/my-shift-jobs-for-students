@@ -70,7 +70,7 @@ public class CompanyHome extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        Query query = jobRef.whereEqualTo("isAvailable", true);
+        Query query = jobRef.orderBy("salary");
 
         FirestoreRecyclerOptions<Job> options = new FirestoreRecyclerOptions.Builder<Job>()
                 .setQuery(query, Job.class)
@@ -79,7 +79,7 @@ public class CompanyHome extends AppCompatActivity {
         myAdapter = new MyAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
 

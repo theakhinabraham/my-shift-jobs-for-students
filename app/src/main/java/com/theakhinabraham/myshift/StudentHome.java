@@ -73,7 +73,7 @@ public class StudentHome extends AppCompatActivity {
         myAdapter = new MyAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
     }
