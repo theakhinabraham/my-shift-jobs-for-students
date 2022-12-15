@@ -34,7 +34,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_centerHorizontal="true"
                 android:layout_height="307dp"
-                app:srcCompat="@drawable/studentProf" />
+                app:srcCompat="@drawable/student" />
 
             <EditText
                 android:id="@+id/st_edName"

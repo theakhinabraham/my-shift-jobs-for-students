@@ -13,8 +13,7 @@
         android:paddingBottom="20dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/ed_text" >
+        android:layout_gravity="center_horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
