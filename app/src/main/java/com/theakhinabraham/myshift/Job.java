@@ -2,18 +2,19 @@ package com.theakhinabraham.myshift;
 
 public class Job {
 
-    String role, description, salary, address, requirements;
+    String role, description, salary, address, requirements, time;
     Boolean isAvailable;
 
     public Job() {
     }
 
-    public Job(String role, String description, String salary, String address, String requirements, Boolean isAvailable) {
+    public Job(String role, String description, String salary, String address, String requirements, String time, Boolean isAvailable) {
         this.role = role;
         this.description = description;
         this.salary = salary;
         this.address = address;
         this.requirements = requirements;
+        this.time = time;
         this.isAvailable = isAvailable;
     }
 
@@ -55,6 +56,14 @@ public class Job {
 
     public void setRequirements(String requirements) {
         this.requirements = requirements;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public Boolean getAvailable() {

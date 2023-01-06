@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class NewJob extends AppCompatActivity {
 
-    EditText role, description, salary, address, requirements;
+    EditText role, description, salary, address, requirements, time;
     Button postJobBtn;
     String userId;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -41,6 +41,7 @@ public class NewJob extends AppCompatActivity {
         address = findViewById(R.id.locality);
         requirements = findViewById(R.id.requirements);
         postJobBtn = findViewById(R.id.postJobBtn);
+        time = findViewById(R.id.time);
 
         //Initializing Firebase
         auth = FirebaseAuth.getInstance();
@@ -56,6 +57,7 @@ public class NewJob extends AppCompatActivity {
                 String nj_salary = salary.getText().toString();
                 String nj_address = address.getText().toString();
                 String nj_requirements = requirements.getText().toString();
+                String nj_time = time.getText().toString();
 
                 if(nj_role.isEmpty() || nj_description.isEmpty() || nj_salary.isEmpty() || nj_address.isEmpty() || nj_requirements.isEmpty()){
                     Toast.makeText(NewJob.this, "Please enter all fields!", Toast.LENGTH_SHORT).show();
@@ -70,6 +72,7 @@ public class NewJob extends AppCompatActivity {
                     job.put("address", nj_address);
                     job.put("requirements", nj_requirements);
                     job.put("isAvailable", true);
+                    job.put("time", nj_time);
 
                     // Add a new document with a generated ID
                     db.collection("Jobs")

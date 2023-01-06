@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/gray</item>
         <!-- Customize your theme here. -->
-        <item name="android:fontFamily">@font/raleway</item>
+        <item name="android:fontFamily">@font/popfont</item>
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
 </resources>

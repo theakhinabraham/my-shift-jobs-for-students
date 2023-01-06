@@ -23,11 +23,75 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/ed_soName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="27dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Magic World"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/so_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:text="USERNAME:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soUsername"
+        app:layout_constraintTop_toBottomOf="@+id/so_name" />
+
+    <EditText
+        android:id="@+id/ed_soPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="27dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:text="abc"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_soUsername" />
+
+    <TextView
+        android:id="@+id/so_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:text="PASSWORD:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soPassword"
+        app:layout_constraintTop_toBottomOf="@+id/so_username" />
+
+    <TextView
+        android:id="@+id/so_locality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
+        android:text="LOCALITY:"
+        app:layout_constraintEnd_toStartOf="@+id/ed_soLocality"
+        app:layout_constraintTop_toBottomOf="@+id/so_password" />
+
+    <EditText
         android:id="@+id/ed_soUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="27dp"
         android:background="@drawable/border"
         android:ems="10"
         android:gravity="center_horizontal"
@@ -43,34 +107,18 @@
         android:id="@+id/so_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
         android:text="COMPANY:"
         app:layout_constraintEnd_toStartOf="@+id/ed_soName"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:id="@+id/so_locality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="18dp"
-        android:text="LOCALITY:"
-        app:layout_constraintEnd_toStartOf="@+id/ed_soLocality"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/so_password" />
 
     <EditText
         android:id="@+id/ed_soLocality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="27dp"
         android:background="@drawable/border"
         android:ems="10"
         android:gravity="center_horizontal"
@@ -81,66 +129,6 @@
         android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_soPassword" />
-
-    <TextView
-        android:id="@+id/so_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="9dp"
-        android:text="PASSWORD:"
-        app:layout_constraintEnd_toStartOf="@+id/ed_soPassword"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/so_username" />
-
-    <EditText
-        android:id="@+id/ed_soPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="68dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:text="abc"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_soUsername" />
-
-    <TextView
-        android:id="@+id/so_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:text="USERNAME:"
-        app:layout_constraintEnd_toStartOf="@+id/ed_soUsername"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/so_name" />
-
-    <EditText
-        android:id="@+id/ed_soName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="68dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Magic World"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/so_saveBtn"

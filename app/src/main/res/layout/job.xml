@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp"
@@ -20,27 +20,27 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:padding="5dp"
-            android:layout_marginBottom="10dp" >
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Job Role"
-                android:textSize="20sp"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/jobRoleDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Frontend Developer"
-                android:textSize="20sp"
-                android:textColor="@color/black"
                 android:gravity="center"
-                android:id="@+id/jobRoleDisplay" />
+                android:text="Frontend Developer"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
 
         </LinearLayout>
 
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Job Desciption"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
             <TextView
@@ -65,96 +65,130 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Develop, Design, Build reusable libraries"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
                 android:id="@+id/jobDescDisplay" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Available Hours"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="10am - 8pm"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Locality"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/localityDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Kochi"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salary"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/salaryDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="12000"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="5dp">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Salary"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12000"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:id="@+id/salaryDisplay" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical"
-            android:paddingBottom="5dp">
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Locality"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kochi"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:id="@+id/localityDisplay" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp"
-            android:paddingBottom="5dp">
-
-
-        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Requirements"
-                android:textSize="20sp"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/requirementsDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="B.C.A"
-                android:textSize="20sp"
                 android:gravity="center"
+                android:text="B.C.A"
                 android:textColor="@color/black"
-                android:id="@+id/requirementsDisplay" />
+                android:textSize="17sp" />
 
         </LinearLayout>
-
 
 
     </LinearLayout>
