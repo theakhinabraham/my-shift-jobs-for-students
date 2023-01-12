@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         user = auth.getCurrentUser();
-        userId = user.getUid();
+        //userId = user.getUid();
 
         registerReg.setOnClickListener(new View.OnClickListener() {
             @Override
