@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         user = auth.getCurrentUser();
-        userId = user.getUid();
+//        userId = user.getUid();
 
         registerReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +128,7 @@ public class RegisterActivity extends AppCompatActivity {
                         company.put("locality", localityText);
                         company.put("isStudent", true);
                         company.put("userID", userId);
-                        Company.document("INITIAL");
+                        Company.document(email_id);
 
                         // Add a new document with a generated ID
                         db.collection("Company")

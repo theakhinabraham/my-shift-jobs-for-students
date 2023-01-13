@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         user = auth.getCurrentUser();
-        userId = user.getUid();
+//        userId = user.getUid();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

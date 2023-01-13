@@ -94,7 +94,7 @@ public class CompanyProfile extends AppCompatActivity {
                 }
 
                 //TODO: REMOVE INITIAL ACCOUNTS FROM DATABASE---------------------------------------
-                db.collection("Company").document("INITIAL")
+                db.collection("Company").document(userId)
                         .delete()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -126,7 +126,7 @@ public class CompanyProfile extends AppCompatActivity {
                                         company.put("isStudent", false);
                                         company.put("userID", userId);
 
-                                        db.collection("Company").document(userId)
+                                        db.collection("Company").document(str_username)
                                                 .set(company)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
