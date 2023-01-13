@@ -2,6 +2,7 @@ package com.theakhinabraham.myshift;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -20,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -56,9 +59,25 @@ public class CompanyProfile extends AppCompatActivity {
 
         CollectionReference companyDB = db.collection("Company");
 
+        DocumentReference reference = companyDB.document(userId);
 
-        //TODO: RETRIEVE AND DISPLAY DATA
+        reference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.getResult().exists()){
+                            String name_string = task.getResult().getString("fullName");
+                            String username_string = task.getResult().getString("username");
+                            String password_string = task.getResult().getString("password");
+                            String locality_string = task.getResult().getString("locality");
 
+                            so_edName.setText(name_string);
+                            so_edUsername.setText(username_string);
+                            so_edPassword.setText(password_string);
+                            so_edLocality.setText(locality_string);
+                        }
+                    }
+                });
 
         so_saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +92,23 @@ public class CompanyProfile extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill all Details", Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                //TODO: REMOVE INITIAL ACCOUNTS FROM DATABASE---------------------------------------
+                db.collection("Company").document("INITIAL")
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error deleting document", e);
+                            }
+                        });
+                //TODO: EDIT CODE ABOVE ------------------------------------------------------------
 
                 companyDB
                         .get()
@@ -89,24 +125,6 @@ public class CompanyProfile extends AppCompatActivity {
                                         company.put("locality", str_locality);
                                         company.put("isStudent", false);
                                         company.put("userID", userId);
-
-                                        if(companyDB.getId() != userId){
-                                            companyDB.document(companyDB.getId())
-                                                    .delete()
-                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void aVoid) {
-                                                            Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                                                        }
-                                                    })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Log.w(TAG, "Error deleting document", e);
-                                                        }
-                                                    });
-                                        }
-
 
                                         db.collection("Company").document(userId)
                                                 .set(company)
@@ -138,12 +156,16 @@ public class CompanyProfile extends AppCompatActivity {
                                                         Toast.makeText(CompanyProfile.this, "COULD NOT SAVE DATA", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
+
+//                                        Query selectInitialAccounts = db.collection("Company").whereEqualTo("isStudent", true);
                                     }
                                 } else {
                                     Toast.makeText(CompanyProfile.this, "CANNOT ACCESS DATABASE", Toast.LENGTH_SHORT).show();
                                 }
 
                                 Toast.makeText(CompanyProfile.this, "Data Saved!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CompanyProfile.this, CompanyHome.class);
+                                startActivity(intent);
                                 finish();
                             }
                         });
