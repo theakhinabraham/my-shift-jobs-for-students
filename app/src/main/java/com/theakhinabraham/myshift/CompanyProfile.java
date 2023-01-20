@@ -1,11 +1,8 @@
 package com.theakhinabraham.myshift;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,7 +56,7 @@ public class CompanyProfile extends AppCompatActivity {
 
         CollectionReference companyDB = db.collection("Company");
 
-        DocumentReference reference = companyDB.document(userId);
+        DocumentReference reference = companyDB.document(user.getEmail());
 
         reference.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -93,23 +90,6 @@ public class CompanyProfile extends AppCompatActivity {
                     return;
                 }
 
-                //TODO: REMOVE INITIAL ACCOUNTS FROM DATABASE---------------------------------------
-                db.collection("Company").document(userId)
-                        .delete()
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error deleting document", e);
-                            }
-                        });
-                //TODO: EDIT CODE ABOVE ------------------------------------------------------------
-
                 companyDB
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -126,45 +106,48 @@ public class CompanyProfile extends AppCompatActivity {
                                         company.put("isStudent", false);
                                         company.put("userID", userId);
 
-                                        db.collection("Company").document(str_username)
-                                                .set(company)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void Void) {
-                                                        Toast.makeText(CompanyProfile.this, "SAVED SUCCESSFULLY", Toast.LENGTH_SHORT).show();
-                                                        user.updateEmail(str_username).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<Void> task) {
-                                                                if (task.isSuccessful()) {
-                                                                    Toast.makeText(CompanyProfile.this, "Email Updated", Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            }
-                                                        });
-                                                        user.updatePassword(str_password).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<Void> task) {
+                                        if (str_password.length() >= 6) {
+                                            db.collection("Company").document(str_username)
+                                                    .set(company)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void Void) {
+                                                            Toast.makeText(CompanyProfile.this, "SAVED SUCCESSFULLY", Toast.LENGTH_SHORT).show();
+                                                            user.updatePassword(str_password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
                                                                     if (task.isSuccessful()) {
                                                                         Toast.makeText(CompanyProfile.this, "Password Updated", Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 }
-                                                        });
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(CompanyProfile.this, "COULD NOT SAVE DATA", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-
-//                                        Query selectInitialAccounts = db.collection("Company").whereEqualTo("isStudent", true);
+                                                            });
+                                                            user.updateEmail(str_username).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        Toast.makeText(CompanyProfile.this, "Email Updated", Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(CompanyProfile.this, "COULD NOT SAVE DATA", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                        }
+                                        else {
+                                            Toast.makeText(CompanyProfile.this, "Password must be more than 6 characters", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } else {
                                     Toast.makeText(CompanyProfile.this, "CANNOT ACCESS DATABASE", Toast.LENGTH_SHORT).show();
                                 }
 
                                 Toast.makeText(CompanyProfile.this, "Data Saved!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CompanyProfile.this, CompanyHome.class);
+                                Intent intent = new Intent(CompanyProfile.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
                             }

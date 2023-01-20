@@ -19,7 +19,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -100,24 +99,22 @@ public class RegisterActivity extends AppCompatActivity {
                         student.put("locality", localityText);
                         student.put("isStudent", true);
                         student.put("userID", userId);
-                        Student.document(email_id);
+                        Student.document(userId);
 
-                        // Add a new document with a generated ID
-                        db.collection("Student")
-                                .add(student)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(RegisterActivity.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(RegisterActivity.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                        //TODO: ADD STUDENT WITH EMAIL ID
+                        db.collection("Student").document(email_id).set(student).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(RegisterActivity.this, "Could not Register", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
+                        //TODO: END OF BUGS
                     else if (companyRadioBtn.isChecked()) {
                         CollectionReference Company = db.collection("Company");
 
@@ -130,21 +127,17 @@ public class RegisterActivity extends AppCompatActivity {
                         company.put("userID", userId);
                         Company.document(email_id);
 
-                        // Add a new document with a generated ID
-                        db.collection("Company")
-                                .add(company)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(RegisterActivity.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(RegisterActivity.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                        db.collection("Company").document(email_id).set(company).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(RegisterActivity.this, "Could not Register", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                     else {
                         isStudent = false;
