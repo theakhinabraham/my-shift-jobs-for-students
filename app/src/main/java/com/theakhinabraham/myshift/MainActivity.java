@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
-                                    //TODO: SIGN IN AS STUDENT
                                     //IF EMAIL & PASSWORD MATCHES
                                     db.collection("Student")
                                             .whereEqualTo("username", email_id)
@@ -125,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
-                                    //TODO: SIGN IN AS COMPANY
                                     //VALIDATE EMAIL & PASSWORD
                                     db.collection("Company")
                                             .whereEqualTo("username", email_id)

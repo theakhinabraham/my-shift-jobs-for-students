@@ -99,9 +99,8 @@ public class RegisterActivity extends AppCompatActivity {
                         student.put("locality", localityText);
                         student.put("isStudent", true);
                         student.put("userID", userId);
-                        Student.document(userId);
+                        Student.document(email_id);
 
-                        //TODO: ADD STUDENT WITH EMAIL ID
                         db.collection("Student").document(email_id).set(student).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
@@ -114,7 +113,6 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         });
                     }
-                        //TODO: END OF BUGS
                     else if (companyRadioBtn.isChecked()) {
                         CollectionReference Company = db.collection("Company");
 
