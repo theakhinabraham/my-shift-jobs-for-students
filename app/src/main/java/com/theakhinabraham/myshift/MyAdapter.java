@@ -74,8 +74,6 @@ public class MyAdapter extends FirestoreRecyclerAdapter<Job, MyAdapter.MyViewHol
 
             job = itemView.findViewById(R.id.jobCard);
 
-
-
         }
     }
 }

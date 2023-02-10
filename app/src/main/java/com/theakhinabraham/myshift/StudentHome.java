@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,8 +27,6 @@ public class StudentHome extends AppCompatActivity {
 
     Button applyPostBtn, st_profileBtn;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +40,6 @@ public class StudentHome extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         userId = user.getUid();
-
-        applyPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(StudentHome.this, ApplyJob.class);
-//                startActivity(intent);
-                Toast.makeText(StudentHome.this, "Applied for Job!", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         st_profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,12 +58,15 @@ public class StudentHome extends AppCompatActivity {
                 .setQuery(query, Job.class)
                 .build();
 
+
         myAdapter = new MyAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
+        recyclerView.setItemAnimator(null);
+        myAdapter.notifyDataSetChanged();
 
     }
 
