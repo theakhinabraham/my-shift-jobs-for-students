@@ -14,7 +14,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="17dp"
         android:layout_marginEnd="56dp"
-        android:text="Apply Job"
+        android:text="Application Status"
         android:backgroundTint="@color/gray"
         android:textColor="@color/gold"
         app:layout_constraintEnd_toEndOf="parent"
