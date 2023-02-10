@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +21,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApplyJob extends AppCompatActivity {
 
@@ -55,7 +60,6 @@ public class ApplyJob extends AppCompatActivity {
 
         // ---------- MAKE CHANGES BELOW ----------
         CollectionReference studentDB = db.collection("Student");
-        CollectionReference appliedDB = db.collection("Applied");
         DocumentReference reference = studentDB.document(user.getEmail());
         // ---------- MAKE CHANGES ABOVE ----------
 
@@ -79,11 +83,7 @@ public class ApplyJob extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ApplyJob.this, StudentHome.class);
                 startActivity(intent);
-                Toast.makeText(ApplyJob.this, "Applied for Job!", Toast.LENGTH_SHORT).show();
-
-                String message;
-                message = messageIntro.getText().toString();
-
+                
                 reference.get()
                         .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override
@@ -92,17 +92,49 @@ public class ApplyJob extends AppCompatActivity {
 
                                     String name_string = task.getResult().getString("fullName");
                                     String email_string = task.getResult().getString("username");
-                                    String password_string = task.getResult().getString("password");
                                     String age_string = task.getResult().getString("age");
                                     String locality_string = task.getResult().getString("locality");
-                                    String education_string = task.getResult().getString("education");
 
-                                    //COLLECTED STUDENT DATA
-                                    //TODO: STORE STUDENT DATA IN APPLIED DB
+                                    String message_string = messageIntro.getText().toString();
 
-                                    //OTHER REMAINING TASKS
-                                    //TODO: PUSH JOB DATA TO APPLIED DB
-                                    //TODO: ADD APPLICATION STATUS (APPROVED/ REJECTED/ PENDING)
+                                    CollectionReference appliedDB = db.collection("Applied");
+
+                                    Map<String, Object> applied = new HashMap<>();
+
+                                    //STUDENT DATA
+                                    applied.put("fullName", name_string);
+                                    applied.put("username", email_string);
+                                    applied.put("age", age_string);
+                                    applied.put("locality", locality_string);
+
+                                    //APPLICATION STATUS DATA
+                                    applied.put("Status", "Pending");
+
+                                    //JOB DATA
+                                    applied.put("role", job_role_display);
+                                    applied.put("description", job_desc_display);
+                                    applied.put("time", time_display);
+                                    applied.put("salary", salary_display);
+                                    applied.put("address", locality_display);
+                                    applied.put("requirements", requirements_display);
+
+                                    //MESSAGE DATA
+                                    applied.put("message", message_string);
+
+                                    appliedDB.document();
+
+                                    appliedDB.document().set(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(ApplyJob.this, "SUCCESSFULLY APPLIED", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(ApplyJob.this, "FAILED TO APPLY: ERROR", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
 
                                 }
                             }
