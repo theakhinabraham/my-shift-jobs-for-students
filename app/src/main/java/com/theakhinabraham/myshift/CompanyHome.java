@@ -23,7 +23,7 @@ public class CompanyHome extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     private CollectionReference jobRef = db.collection("Jobs");
-    private MyAdapter myAdapter;
+    private CompanyAdapter companyAdapter;
 
     String userId;
     Button applicationBtn, addNewPostBtn, so_profileBtn;
@@ -54,7 +54,7 @@ public class CompanyHome extends AppCompatActivity {
         applicationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(CompanyHome.this, "APPLICATION BUTTON WORKING", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CompanyHome.this, userId, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -70,31 +70,33 @@ public class CompanyHome extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        Query query = jobRef.orderBy("salary");
+        Query query = db.collection("Jobs").orderBy("salary");
 
         FirestoreRecyclerOptions<Job> options = new FirestoreRecyclerOptions.Builder<Job>()
                 .setQuery(query, Job.class)
                 .build();
 
-        myAdapter = new MyAdapter(options);
+        companyAdapter = new CompanyAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(myAdapter);
+        recyclerView.setAdapter(companyAdapter);
+        recyclerView.setItemAnimator(null);
+        companyAdapter.notifyDataSetChanged();
 
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-        myAdapter.startListening();
+        companyAdapter.startListening();
     }
 
     @Override
     protected void onStop(){
         super.onStop();
-        myAdapter.stopListening();
+        companyAdapter.stopListening();
     }
 
 }

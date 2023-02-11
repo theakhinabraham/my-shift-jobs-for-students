@@ -72,6 +72,7 @@ public class NewJob extends AppCompatActivity {
                     job.put("address", nj_address);
                     job.put("requirements", nj_requirements);
                     job.put("isAvailable", true);
+                    job.put("userID", userId);
                     job.put("time", nj_time);
 
                     // Add a new document with a generated ID
