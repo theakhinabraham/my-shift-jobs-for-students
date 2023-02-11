@@ -8,27 +8,31 @@
 
     <Button
         android:id="@+id/addNewPostBtn"
-        android:layout_width="170dp"
+        android:layout_width="140dp"
         android:layout_height="52dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/gray"
         android:text="New Post"
         android:textColor="@color/gold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/so_profileBtn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/so_profileBtn"
-        android:layout_width="170dp"
+        android:layout_width="140dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/gray"
         android:text="Profile"
         android:textColor="@color/gold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addNewPostBtn" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -57,7 +61,7 @@
 
     <Button
         android:id="@+id/applicationBtn"
-        android:layout_width="359dp"
+        android:layout_width="300dp"
         android:layout_height="52dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="18dp"

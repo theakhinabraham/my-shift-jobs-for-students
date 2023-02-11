@@ -7,144 +7,124 @@
     android:background="@color/cream"
     tools:context=".NewJob">
 
-    <TextView
-        android:id="@+id/newJob"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="127dp"
-        android:text="Post New Job"
-        android:textStyle="bold"
-        android:textColor="@color/gray"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/role"
-        android:background="@drawable/border"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="56dp"
-        android:ems="10"
-        android:hint="Job Title"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newJob" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="302dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="56dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Job Description"
-        android:inputType="textMultiLine"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/role" />
+            <TextView
+                android:id="@+id/newJob"
+                android:layout_width="350dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Post New Job"
+                android:textColor="@color/gray"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/salary"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="58dp"
-        android:ems="10"
-        android:background="@drawable/border"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        android:gravity="center_horizontal"
-        android:hint="Salary"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+            <EditText
+                android:id="@+id/role"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="Job Title"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
 
-    <EditText
-        android:id="@+id/locality"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="58dp"
-        android:ems="10"
-        android:hint="Locality"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:background="@drawable/border"
-        android:gravity="center_horizontal"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/salary" />
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="302dp"
+                android:layout_height="115dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"                android:hint="Job Description"
+                android:inputType="textMultiLine"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
 
-    <EditText
-        android:id="@+id/requirements"
-        android:layout_width="300dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="56dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Requirements"
-        android:inputType="textMultiLine"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locality" />
+            <EditText
+                android:id="@+id/salary"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"                android:hint="Salary"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
 
-    <Button
-        android:id="@+id/postJobBtn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="56dp"
-        android:backgroundTint="@color/gray"
-        android:text="Post Job"
-        android:textColor="@color/gold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requirements" />
+            <EditText
+                android:id="@+id/locality"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"                android:hint="Locality"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
 
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="58dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Work Hours"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@color/gray"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/salary" />
+            <EditText
+                android:id="@+id/requirements"
+                android:layout_width="300dp"
+                android:layout_height="115dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"                android:hint="Requirements"
+                android:inputType="textMultiLine"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
+
+            <EditText
+                android:id="@+id/time"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"                android:hint="Work Hours"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray" />
+
+            <Button
+                android:id="@+id/postJobBtn"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gray"
+                android:text="Post Job"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gold"
+                tools:layout_editor_absoluteY="637dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

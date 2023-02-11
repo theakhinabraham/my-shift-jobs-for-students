@@ -113,7 +113,7 @@ public class StudentProfile extends AppCompatActivity {
                                     student.put("locality", std_locality);
                                     student.put("age", std_age);
                                     student.put("education", std_education);
-                                    student.put("isStudent", false);
+                                    student.put("isStudent", true);
                                     student.put("userID", userId);
 
                                     if (std_password.length() >= 6) {

@@ -6,7 +6,7 @@
     android:background="@color/cream">
 
     <LinearLayout
-        android:layout_width="400dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
@@ -104,7 +104,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="157dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
@@ -133,34 +133,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="66dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingBottom="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Salary"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/salaryDisplay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="12000"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -187,6 +159,35 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="B.C.A"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salary"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/salaryDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="12000"
                 android:textColor="@color/black"
                 android:textSize="17sp" />
 

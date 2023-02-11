@@ -70,7 +70,9 @@ public class CompanyHome extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        Query query = db.collection("Jobs").orderBy("salary");
+        //TODO: GET VALUES ONLY WHERE "userID" = userId
+        String uid = userId;
+        Query query = db.collection("Jobs").whereEqualTo("userID", uid);
 
         FirestoreRecyclerOptions<Job> options = new FirestoreRecyclerOptions.Builder<Job>()
                 .setQuery(query, Job.class)
