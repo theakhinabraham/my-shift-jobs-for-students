@@ -26,10 +26,9 @@ public class CompanyHome extends AppCompatActivity {
     private CompanyAdapter companyAdapter;
 
     String userId;
-    Button applicationBtn, addNewPostBtn, so_profileBtn;
+    Button addNewPostBtn, so_profileBtn;
 
     private void setUpRecyclerView() {
-        //TODO: GET VALUES ONLY WHERE "userID" = userId
         String uid = userId;
         Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
         Query query = db.collection("Jobs").whereEqualTo("userID", userId).orderBy("userID");
@@ -66,7 +65,6 @@ public class CompanyHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_home);
 
-        applicationBtn = findViewById(R.id.applicationBtn);
         addNewPostBtn = findViewById(R.id.addNewPostBtn);
         so_profileBtn = findViewById(R.id.so_profileBtn);
 
@@ -83,19 +81,11 @@ public class CompanyHome extends AppCompatActivity {
             }
         });
 
-        applicationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(CompanyHome.this, userId, Toast.LENGTH_SHORT).show();
-            }
-        });
-
         so_profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToCompanyProfile = new Intent(CompanyHome.this, CompanyProfile.class);
                 startActivity(goToCompanyProfile);
-                finish();
             }
         });
 

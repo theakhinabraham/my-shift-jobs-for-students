@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class ApplyJob extends AppCompatActivity {
 
-    TextView role, description, salary, locality, requirements, time;
+    TextView role, description, salary, locality, requirements, time, education;
     EditText messageIntro;
     Button applyJobBtn;
 
@@ -94,6 +94,7 @@ public class ApplyJob extends AppCompatActivity {
                                     String email_string = task.getResult().getString("username");
                                     String age_string = task.getResult().getString("age");
                                     String locality_string = task.getResult().getString("locality");
+                                    String education_string = task.getResult().getString("education");
 
                                     String message_string = messageIntro.getText().toString();
 
@@ -106,6 +107,7 @@ public class ApplyJob extends AppCompatActivity {
                                     applied.put("username", email_string);
                                     applied.put("age", age_string);
                                     applied.put("locality", locality_string);
+                                    applied.put("education", education_string);
 
                                     //APPLICATION STATUS DATA
                                     applied.put("Status", "Pending");
