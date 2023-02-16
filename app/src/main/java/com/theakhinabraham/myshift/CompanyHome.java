@@ -28,51 +28,11 @@ public class CompanyHome extends AppCompatActivity {
     String userId;
     Button applicationBtn, addNewPostBtn, so_profileBtn;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_home);
-
-        setUpRecyclerView();
-
-        applicationBtn = findViewById(R.id.applicationBtn);
-        addNewPostBtn = findViewById(R.id.addNewPostBtn);
-        so_profileBtn = findViewById(R.id.so_profileBtn);
-
-        auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
-        userId = user.getUid();
-
-        addNewPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent newPostIntent = new Intent(CompanyHome.this, NewJob.class);
-                startActivity(newPostIntent);
-            }
-        });
-
-        applicationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(CompanyHome.this, userId, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        so_profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToCompanyProfile = new Intent(CompanyHome.this, CompanyProfile.class);
-                startActivity(goToCompanyProfile);
-                finish();
-            }
-        });
-
-    }
-
     private void setUpRecyclerView() {
         //TODO: GET VALUES ONLY WHERE "userID" = userId
         String uid = userId;
-        Query query = db.collection("Jobs").whereEqualTo("userID", uid);
+        Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
+        Query query = db.collection("Jobs").whereEqualTo("userID", userId).orderBy("userID");
 
         FirestoreRecyclerOptions<Job> options = new FirestoreRecyclerOptions.Builder<Job>()
                 .setQuery(query, Job.class)
@@ -100,5 +60,47 @@ public class CompanyHome extends AppCompatActivity {
         super.onStop();
         companyAdapter.stopListening();
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_company_home);
+
+        applicationBtn = findViewById(R.id.applicationBtn);
+        addNewPostBtn = findViewById(R.id.addNewPostBtn);
+        so_profileBtn = findViewById(R.id.so_profileBtn);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        userId = user.getUid();
+
+        setUpRecyclerView();
+        addNewPostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newPostIntent = new Intent(CompanyHome.this, NewJob.class);
+                startActivity(newPostIntent);
+            }
+        });
+
+        applicationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CompanyHome.this, userId, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        so_profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToCompanyProfile = new Intent(CompanyHome.this, CompanyProfile.class);
+                startActivity(goToCompanyProfile);
+                finish();
+            }
+        });
+
+    }
+
+
 
 }
