@@ -68,7 +68,7 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
             jobRoleDisplay = itemView.findViewById(R.id.jobRoleDisplay);
             jobDescDisplay = itemView.findViewById(R.id.jobDescDisplay);
             salaryDisplay = itemView.findViewById(R.id.salaryDisplay);
-            localityDisplay = itemView.findViewById(R.id.localityDisplay);
+            localityDisplay = itemView.findViewById(R.id.appliedStudentLocality);
             requirementsDisplay = itemView.findViewById(R.id.requirementsDisplay);
             timeDisplay = itemView.findViewById(R.id.time);
 

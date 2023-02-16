@@ -7,12 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AppliedStudents extends AppCompatActivity {
 
 //TODO: VIEW APPLIED STUDENTS RESPECTIVE TO JOB POSTED (FOR COMPANY)
-    //1. DISPLAY COMPANY USER JOBS ONLY
-    //2. CLICKABLE RECYCLER VIEW -> VIEW APPLICANTS
-    //3. APPROVE/REJECT APPLICANT
-    //4. UPDATE APPLIED DB
-    //5. DELETE POSTING
-
+    //1. Show RecyclerView for all students applied for single job
+        //User Job userID
+    //2. Two clickable buttons: accept/reject: must make changes in Applied DB
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
