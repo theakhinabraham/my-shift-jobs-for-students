@@ -26,7 +26,8 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
         holder.salaryDisplay.setText(job.salary);
         holder.localityDisplay.setText(job.address);
         holder.requirementsDisplay.setText(job.requirements);
-        holder.jobIdDisplay.setText(job.jobID);
+        holder.jobIdDisplay.setText((String.valueOf(job.jobID)));
+
         holder.timeDisplay.setText(job.time);holder.job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
