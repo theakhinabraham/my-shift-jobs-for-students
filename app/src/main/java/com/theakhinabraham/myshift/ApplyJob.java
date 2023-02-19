@@ -71,7 +71,7 @@ public class ApplyJob extends AppCompatActivity {
         String locality_display = intent.getStringExtra("localityDisplay");
         String requirements_display = intent.getStringExtra("requirementsDisplay");
         String time_display = intent.getStringExtra("timeDisplay");
-//        int job_id_display = intent.getIntExtra("jobIdDisplay", 0);
+        int job_id_display = intent.getIntExtra("jobIdDisplay", 0);
 
         role.setText(job_role_display);
         description.setText(job_desc_display);
@@ -79,8 +79,7 @@ public class ApplyJob extends AppCompatActivity {
         locality.setText(locality_display);
         requirements.setText(requirements_display);
         time.setText(time_display);
-//        jobIdDisplay.setText(String.valueOf(job_id_display));
-
+        jobIdDisplay.setText(String.valueOf(job_id_display));
         applyJobBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,7 +115,7 @@ public class ApplyJob extends AppCompatActivity {
                                     applied.put("Status", "Pending");
 
                                     //JOB DATA
-//                                    applied.put("jobID", job_id_display);
+                                    applied.put("jobID", job_id_display);
 
                                     //MESSAGE DATA
                                     applied.put("message", message_string);
