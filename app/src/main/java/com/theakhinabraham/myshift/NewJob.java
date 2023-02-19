@@ -10,12 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +27,7 @@ import java.util.Map;
 public class NewJob extends AppCompatActivity {
 
     EditText role, description, salary, address, requirements, time;
+    int bigCount;
     Button postJobBtn;
     String userId;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,6 +53,30 @@ public class NewJob extends AppCompatActivity {
         user = auth.getCurrentUser();
         userId = user.getUid();
 
+        db.collection("Jobs")
+                .whereEqualTo("isJob", true)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int numberCount = 0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                int currentCount = task.getResult().size();
+                                if (currentCount > numberCount){
+                                    numberCount = currentCount;
+                                }
+                                else {
+                                    continue;
+                                }
+                            }
+                            Toast.makeText(NewJob.this, String.valueOf(numberCount), Toast.LENGTH_SHORT).show();
+                        } else {
+                            //
+                        }
+                    }
+                });
+
         postJobBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,11 +88,18 @@ public class NewJob extends AppCompatActivity {
                 String nj_requirements = requirements.getText().toString();
                 String nj_time = time.getText().toString();
 
+
+
                 if(nj_role.isEmpty() || nj_description.isEmpty() || nj_salary.isEmpty() || nj_address.isEmpty() || nj_requirements.isEmpty()){
                     Toast.makeText(NewJob.this, "Please enter all fields!", Toast.LENGTH_SHORT).show();
                 }
 
                 else{
+                    //TODO: CHANGE INTO COLLECTION COUNT
+                    int count = 0;
+//                    int numberCount = 0;
+//                    numberCount++;
+
                     //Creating Data for FIRESTORE
                     Map<String, Object> job = new HashMap<>();
                     job.put("role", nj_role);
@@ -72,7 +108,9 @@ public class NewJob extends AppCompatActivity {
                     job.put("address", nj_address);
                     job.put("requirements", nj_requirements);
                     job.put("isAvailable", true);
+                    job.put("jobID", String.valueOf(count));
                     job.put("userID", userId);
+                    job.put("isJob", true);
                     job.put("time", nj_time);
 
                     // Add a new document with a generated ID
