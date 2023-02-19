@@ -110,12 +110,17 @@ public class ApplyJob extends AppCompatActivity {
                                     applied.put("age", age_string);
                                     applied.put("locality", locality_string);
                                     applied.put("education", education_string);
+                                    applied.put("userID", userId);
 
                                     //APPLICATION STATUS DATA
                                     applied.put("Status", "Pending");
 
                                     //JOB DATA
                                     applied.put("jobID", job_id_display);
+                                    applied.put("role", job_role_display);
+                                    applied.put("salary", salary_display);
+                                    applied.put("time", time_display);
+                                    applied.put("address", locality_display);
 
                                     //MESSAGE DATA
                                     applied.put("message", message_string);

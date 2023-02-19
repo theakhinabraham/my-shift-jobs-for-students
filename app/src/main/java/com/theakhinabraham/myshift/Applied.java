@@ -2,22 +2,26 @@ package com.theakhinabraham.myshift;
 
 public class Applied {
 
-    String fullName, username, age, message, locality, education;
+    String status, address, age, education, fullName, locality, message, role, salary, time, username;
+    int jobID;
 
-    public String getFullName() {
-        return fullName;
+    public Applied() {
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public String getStatus() {
+        return status;
     }
 
-    public String getUsername() {
-        return username;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getAge() {
@@ -28,12 +32,20 @@ public class Applied {
         this.age = age;
     }
 
-    public String getMessage() {
-        return message;
+    public String getEducation() {
+        return education;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getLocality() {
@@ -44,22 +56,66 @@ public class Applied {
         this.locality = locality;
     }
 
-    public String getEducation() {
-        return education;
+    public String getMessage() {
+        return message;
     }
 
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public Applied(String fullName, String username, String age, String message, String locality, String education) {
-        this.fullName = fullName;
-        this.username = username;
-        this.age = age;
+    public void setMessage(String message) {
         this.message = message;
-        this.locality = locality;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getJobID() {
+        return jobID;
+    }
+
+    public void setJobID(int jobID) {
+        this.jobID = jobID;
+    }
+
+    public Applied(String status, String address, String age, String education, String fullName, String locality, String message, String role, String salary, String time, String username, int jobID) {
+        this.status = status;
+        this.address = address;
+        this.age = age;
         this.education = education;
-
-
+        this.fullName = fullName;
+        this.locality = locality;
+        this.message = message;
+        this.role = role;
+        this.salary = salary;
+        this.time = time;
+        this.username = username;
+        this.jobID = jobID;
     }
 }

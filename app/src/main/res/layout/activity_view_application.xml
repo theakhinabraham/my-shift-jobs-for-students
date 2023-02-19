@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ViewApplication">
 
+    <ScrollView
+        android:id="@+id/scrollView200"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/viewAppRecycler"
+            android:layout_width="350dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

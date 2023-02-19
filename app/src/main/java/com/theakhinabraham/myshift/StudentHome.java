@@ -24,7 +24,6 @@ public class StudentHome extends AppCompatActivity {
     private CollectionReference jobRef = db.collection("Jobs");
     private MyAdapter myAdapter;
     String userId;
-
     Button applyPostBtn, st_profileBtn;
 
     @Override
@@ -40,12 +39,19 @@ public class StudentHome extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         userId = user.getUid();
-
         st_profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(StudentHome.this, StudentProfile.class);
                 startActivity(i);
+            }
+        });
+
+        applyPostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newInt = new Intent(StudentHome.this, ViewApplication.class);
+                startActivity(newInt);
             }
         });
 
@@ -81,5 +87,7 @@ public class StudentHome extends AppCompatActivity {
         super.onStop();
         myAdapter.stopListening();
     }
+
+
 
 }

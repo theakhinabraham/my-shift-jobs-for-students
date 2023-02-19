@@ -31,7 +31,7 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
         holder.timeDisplay.setText(job.time);holder.job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ApplyJob.class);
+                Intent intent = new Intent(view.getContext(), AppliedStudents.class);
                 String job_role_display = job.role;
                 intent.putExtra("jobRoleDisplay", job_role_display);
                 String job_desc_display = job.description;
@@ -44,7 +44,8 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
                 intent.putExtra("requirementsDisplay", requirements_display);
                 String time_display = job.time;
                 intent.putExtra("timeDisplay", time_display);
-
+                int job_id_display = job.jobID;
+                intent.putExtra("jobIdDisplay", job_id_display);
 
                 view.getContext().startActivity(intent);
             }

@@ -25,7 +25,11 @@ public class AppliedStudents extends AppCompatActivity {
 
     String userId;
 
+    //TODO: Receive Intent Values from CompanyAdapter.java (including jobID)
+
     private void setUpRecyclerView() {
+        //TODO: RETYPE QUERY
+        //QUERY: jobID = Applied DB jobID
         String uid = userId;
         Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
         Query query = db.collection("Applied").whereEqualTo("userID", userId).orderBy("userID");
@@ -44,22 +48,12 @@ public class AppliedStudents extends AppCompatActivity {
         appliedAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        appliedAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        appliedAdapter.stopListening();
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_applied_students);
+
+        //TODO: REJECT/ACCEPT APPLICANT
     }
 }
