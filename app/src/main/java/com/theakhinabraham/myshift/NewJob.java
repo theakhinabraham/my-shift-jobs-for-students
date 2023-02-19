@@ -27,7 +27,7 @@ import java.util.Map;
 public class NewJob extends AppCompatActivity {
 
     EditText role, description, salary, address, requirements, time;
-    int bigCount;
+    int numberCount;
     Button postJobBtn;
     String userId;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -60,7 +60,7 @@ public class NewJob extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            int numberCount = 0;
+                            numberCount = 0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 int currentCount = task.getResult().size();
                                 if (currentCount > numberCount){
@@ -71,8 +71,6 @@ public class NewJob extends AppCompatActivity {
                                 }
                             }
                             Toast.makeText(NewJob.this, String.valueOf(numberCount), Toast.LENGTH_SHORT).show();
-                        } else {
-                            //
                         }
                     }
                 });
@@ -95,10 +93,7 @@ public class NewJob extends AppCompatActivity {
                 }
 
                 else{
-                    //TODO: CHANGE INTO COLLECTION COUNT
                     int count = 0;
-//                    int numberCount = 0;
-//                    numberCount++;
 
                     //Creating Data for FIRESTORE
                     Map<String, Object> job = new HashMap<>();
@@ -108,7 +103,7 @@ public class NewJob extends AppCompatActivity {
                     job.put("address", nj_address);
                     job.put("requirements", nj_requirements);
                     job.put("isAvailable", true);
-                    job.put("jobID", String.valueOf(count));
+                    job.put("jobID", numberCount);
                     job.put("userID", userId);
                     job.put("isJob", true);
                     job.put("time", nj_time);

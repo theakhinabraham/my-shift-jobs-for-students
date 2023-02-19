@@ -4,6 +4,19 @@ public class Job {
 
     String role, description, salary, address, requirements, time;
     Boolean isAvailable;
+    int jobID;
+
+    public int getJobID() {
+        return jobID;
+    }
+
+    public void setJobID(int jobID) {
+        this.jobID = jobID;
+    }
+
+    public Job(int jobID) {
+        this.jobID = jobID;
+    }
 
     public Job() {
     }

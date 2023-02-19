@@ -45,7 +45,6 @@ public class CompanyHome extends AppCompatActivity {
         recyclerView.setAdapter(companyAdapter);
         recyclerView.setItemAnimator(null);
         companyAdapter.notifyDataSetChanged();
-
     }
 
     @Override

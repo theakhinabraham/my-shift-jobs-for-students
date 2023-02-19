@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class ApplyJob extends AppCompatActivity {
 
-    TextView role, description, salary, locality, requirements, time, education;
+    TextView role, description, salary, locality, requirements, time, jobIdDisplay;
     EditText messageIntro;
     Button applyJobBtn;
 
@@ -49,6 +49,7 @@ public class ApplyJob extends AppCompatActivity {
         requirements = findViewById(R.id.requirements);
         time = findViewById(R.id.timeApply);
         applyJobBtn = findViewById(R.id.applyJobBtn);
+        jobIdDisplay = findViewById(R.id.jobIdDisplay);
 
         messageIntro = findViewById(R.id.messageIntro);
 
@@ -70,6 +71,7 @@ public class ApplyJob extends AppCompatActivity {
         String locality_display = intent.getStringExtra("localityDisplay");
         String requirements_display = intent.getStringExtra("requirementsDisplay");
         String time_display = intent.getStringExtra("timeDisplay");
+//        int job_id_display = intent.getIntExtra("jobIdDisplay", 0);
 
         role.setText(job_role_display);
         description.setText(job_desc_display);
@@ -77,6 +79,7 @@ public class ApplyJob extends AppCompatActivity {
         locality.setText(locality_display);
         requirements.setText(requirements_display);
         time.setText(time_display);
+//        jobIdDisplay.setText(String.valueOf(job_id_display));
 
         applyJobBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,12 +116,7 @@ public class ApplyJob extends AppCompatActivity {
                                     applied.put("Status", "Pending");
 
                                     //JOB DATA
-                                    applied.put("role", job_role_display);
-                                    applied.put("description", job_desc_display);
-                                    applied.put("time", time_display);
-                                    applied.put("salary", salary_display);
-                                    applied.put("address", locality_display);
-                                    applied.put("requirements", requirements_display);
+//                                    applied.put("jobID", job_id_display);
 
                                     //MESSAGE DATA
                                     applied.put("message", message_string);

@@ -27,6 +27,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<Job, MyAdapter.MyViewHol
         holder.localityDisplay.setText(job.address);
         holder.requirementsDisplay.setText(job.requirements);
         holder.timeDisplay.setText(job.time);
+        holder.jobIdDisplay.setText((String.valueOf(job.jobID)));
         holder.job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +44,8 @@ public class MyAdapter extends FirestoreRecyclerAdapter<Job, MyAdapter.MyViewHol
                 intent.putExtra("requirementsDisplay", requirements_display);
                 String time_display = job.time;
                 intent.putExtra("timeDisplay", time_display);
+                int job_id_display = job.jobID;
+                intent.putExtra("jobIdDisplay", job_id_display);
 
                 view.getContext().startActivity(intent);
             }
@@ -59,7 +62,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<Job, MyAdapter.MyViewHol
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView jobRoleDisplay, jobDescDisplay, salaryDisplay, localityDisplay, requirementsDisplay, timeDisplay;
+        TextView jobRoleDisplay, jobDescDisplay, salaryDisplay, localityDisplay, requirementsDisplay, timeDisplay, jobIdDisplay;
         CardView job;
 
         public MyViewHolder (View itemView){
@@ -71,6 +74,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<Job, MyAdapter.MyViewHol
             localityDisplay = itemView.findViewById(R.id.appliedStudentLocality);
             requirementsDisplay = itemView.findViewById(R.id.requirementsDisplay);
             timeDisplay = itemView.findViewById(R.id.time);
+            jobIdDisplay = itemView.findViewById(R.id.jobIdNumberDisplay);
 
             job = itemView.findViewById(R.id.jobCard);
 

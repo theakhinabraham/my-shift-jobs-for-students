@@ -26,11 +26,11 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
         holder.salaryDisplay.setText(job.salary);
         holder.localityDisplay.setText(job.address);
         holder.requirementsDisplay.setText(job.requirements);
-        holder.timeDisplay.setText(job.time);
-        holder.job.setOnClickListener(new View.OnClickListener() {
+        holder.jobIdDisplay.setText(job.jobID);
+        holder.timeDisplay.setText(job.time);holder.job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AppliedStudents.class);
+                Intent intent = new Intent(view.getContext(), ApplyJob.class);
                 String job_role_display = job.role;
                 intent.putExtra("jobRoleDisplay", job_role_display);
                 String job_desc_display = job.description;
@@ -43,6 +43,7 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
                 intent.putExtra("requirementsDisplay", requirements_display);
                 String time_display = job.time;
                 intent.putExtra("timeDisplay", time_display);
+
 
                 view.getContext().startActivity(intent);
             }
@@ -59,7 +60,7 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView jobRoleDisplay, jobDescDisplay, salaryDisplay, localityDisplay, requirementsDisplay, timeDisplay;
+        TextView jobRoleDisplay, jobDescDisplay, salaryDisplay, localityDisplay, requirementsDisplay, timeDisplay, jobIdDisplay;
         CardView job;
 
         public MyViewHolder (View itemView){
@@ -71,6 +72,7 @@ public class CompanyAdapter extends FirestoreRecyclerAdapter<Job, CompanyAdapter
             localityDisplay = itemView.findViewById(R.id.appliedStudentLocality);
             requirementsDisplay = itemView.findViewById(R.id.requirementsDisplay);
             timeDisplay = itemView.findViewById(R.id.time);
+            jobIdDisplay = itemView.findViewById(R.id.jobIdNumberDisplay);
 
             job = itemView.findViewById(R.id.jobCard);
 
