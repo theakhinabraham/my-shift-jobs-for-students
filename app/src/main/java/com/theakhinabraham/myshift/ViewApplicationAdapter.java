@@ -19,7 +19,12 @@ public class ViewApplicationAdapter extends FirestoreRecyclerAdapter<Applied, Vi
 
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Applied applied) {
-
+        holder.showJob.setText(applied.role);
+        holder.showSalary.setText(applied.salary);
+        holder.showLocality.setText(applied.address);
+        holder.showStatus.setText(applied.status);
+        holder.showHours.setText(applied.time);
+        holder.showJobId.setText(String.valueOf(applied.jobID));
     }
 
     @NonNull

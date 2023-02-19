@@ -26,7 +26,7 @@ public class ViewApplication extends AppCompatActivity {
     private void setUpRecyclerView() {
         String uid = userId;
         Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
-        Query query = db.collection("Jobs").orderBy("userID");
+        Query query = db.collection("Applied").whereEqualTo("userID", userId).orderBy("jobID");
 
         FirestoreRecyclerOptions<Applied> options = new FirestoreRecyclerOptions.Builder<Applied>()
                 .setQuery(query, Applied.class)
