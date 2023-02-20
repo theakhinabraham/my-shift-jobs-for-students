@@ -39,7 +39,7 @@ public class CompanyHome extends AppCompatActivity {
 
         companyAdapter = new CompanyAdapter(options);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(companyAdapter);

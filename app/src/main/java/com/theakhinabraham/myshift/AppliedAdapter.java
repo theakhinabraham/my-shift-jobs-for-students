@@ -8,10 +8,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAdapter.MyViewHolder> {
 
@@ -27,12 +32,24 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
         holder.appliedStudentLocality.setText(applied.locality);
         holder.appliedStudentAge.setText(applied.age);
 
+        String userId;
+
+        FirebaseAuth auth;
+        FirebaseFirestore db;
+        FirebaseUser user;
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        user = auth.getCurrentUser();
+        userId = user.getUid();
+        CollectionReference appliedRef = db.collection("Applied");
         holder.rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String status = "Rejected";
-                Intent intent = new Intent(view.getContext(), AppliedStudents.class);
-                intent.putExtra("Status", status);
+//                Intent i = new Intent(view.getContext(), AppliedStudents.class);
+//                i.putExtra("Status", status);
+                
             }
         });
 
@@ -40,12 +57,11 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
             @Override
             public void onClick(View view) {
                 String status = "Accepted";
-                Intent intent = new Intent(view.getContext(), AppliedStudents.class);
-                intent.putExtra("Status", status);
+                Intent i = new Intent(view.getContext(), AppliedStudents.class);
+                i.putExtra("Status", status);
             }
         });
     }
-
 
     @NonNull
     @Override
@@ -60,6 +76,8 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
         TextView appliedStudentName, appliedStudentEmail, appliedStudentEducation, appliedStudentLocality, appliedStudentAge;
         Button rejectBtn, acceptBtn;
 
+        CardView appliedCard;
+
         public MyViewHolder (View itemView){
             super(itemView);
 
@@ -71,6 +89,8 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
 
             rejectBtn = itemView.findViewById(R.id.rejectBtn);
             acceptBtn = itemView.findViewById(R.id.acceptBtn);
+
+            appliedCard = itemView.findViewById(R.id.jobCard);
 
         }
     }

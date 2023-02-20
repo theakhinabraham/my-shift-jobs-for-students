@@ -125,9 +125,8 @@ public class ApplyJob extends AppCompatActivity {
                                     //MESSAGE DATA
                                     applied.put("message", message_string);
 
-                                    appliedDB.document();
-
-                                    appliedDB.document().set(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    String appliedId = userId + "---" + job_id_display;
+                                    appliedDB.document(appliedId).set(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
                                             Toast.makeText(ApplyJob.this, "SUCCESSFULLY APPLIED", Toast.LENGTH_SHORT).show();

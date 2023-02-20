@@ -67,7 +67,7 @@ public class StudentHome extends AppCompatActivity {
 
         myAdapter = new MyAdapter(options);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
@@ -87,7 +87,5 @@ public class StudentHome extends AppCompatActivity {
         super.onStop();
         myAdapter.stopListening();
     }
-
-
 
 }

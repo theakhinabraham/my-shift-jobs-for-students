@@ -1,5 +1,6 @@
 package com.theakhinabraham.myshift;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -24,15 +25,18 @@ public class AppliedStudents extends AppCompatActivity {
     private AppliedAdapter appliedAdapter;
 
     String userId;
+    String status;
 
-    //TODO: Receive Intent Values from CompanyAdapter.java (including jobID)
 
     private void setUpRecyclerView() {
+
+        Intent i = getIntent();
+        int job_id = i.getIntExtra("jobIdDisplay", 250);
+        status = i.getStringExtra("status");
+
         //TODO: RETYPE QUERY
-        //QUERY: jobID = Applied DB jobID
-        String uid = userId;
-        Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
-        Query query = db.collection("Applied").whereEqualTo("userID", userId).orderBy("userID");
+        Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
+        Query query = db.collection("Applied").whereEqualTo("jobID", job_id).orderBy("jobID");
 
         FirestoreRecyclerOptions<Applied> options = new FirestoreRecyclerOptions.Builder<Applied>()
                 .setQuery(query, Applied.class)
@@ -40,12 +44,24 @@ public class AppliedStudents extends AppCompatActivity {
 
         appliedAdapter = new AppliedAdapter(options);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = findViewById(R.id.appliedRecycler);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(appliedAdapter);
         recyclerView.setItemAnimator(null);
         appliedAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        appliedAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        appliedAdapter.stopListening();
     }
 
 
@@ -54,6 +70,11 @@ public class AppliedStudents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_applied_students);
 
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        userId = user.getUid();
+
+        setUpRecyclerView();
         //TODO: REJECT/ACCEPT APPLICANT
     }
 }
