@@ -33,6 +33,9 @@ public class AppliedStudents extends AppCompatActivity {
         int job_id = i.getIntExtra("jobIdDisplay", 250);
         status = i.getStringExtra("status");
 
+        Intent newIntent = new Intent(AppliedStudents.this, AppliedAdapter.class);
+        newIntent.putExtra("jobID", job_id);
+
         Query query = db.collection("Applied").whereEqualTo("jobID", job_id).orderBy("jobID");
 
         FirestoreRecyclerOptions<Applied> options = new FirestoreRecyclerOptions.Builder<Applied>()

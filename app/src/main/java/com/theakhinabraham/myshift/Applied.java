@@ -2,8 +2,20 @@ package com.theakhinabraham.myshift;
 
 public class Applied {
 
-    String status, address, age, education, fullName, locality, message, role, salary, time, username;
+    String status, address, age, education, fullName, locality, message, role, salary, time, username, userID;
     int jobID;
+
+    public Applied(String userID) {
+        this.userID = userID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public Applied() {
     }

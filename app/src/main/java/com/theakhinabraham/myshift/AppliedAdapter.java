@@ -1,6 +1,5 @@
 package com.theakhinabraham.myshift;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +45,8 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        String studentUID = applied.userID;
+
         user = auth.getCurrentUser();
         userId = user.getUid();
         CollectionReference appliedRef = db.collection("Applied");
@@ -54,11 +55,11 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
                                                 public void onClick(View view) {
                                                     String status = "Rejected";
 
+                                                    int jobID = applied.jobID;
                                                     Map<String, Object> applied = new HashMap<>();
                                                     applied.put("Status", status);
 
-                                                    //TODO: READ DOCUMENT ID TO CHANGE STATUS
-                                                    appliedRef.document().update(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    appliedRef.document(studentUID + "---" + jobID).update(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void unused) {
                                                             Toast.makeText(view.getContext(), "Status Updated", Toast.LENGTH_SHORT).show();
@@ -76,8 +77,21 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
             @Override
             public void onClick(View view) {
                 String status = "Accepted";
-                Intent i = new Intent(view.getContext(), AppliedStudents.class);
-                i.putExtra("Status", status);
+                int jobID = applied.jobID;
+                Map<String, Object> applied = new HashMap<>();
+                applied.put("Status", status);
+
+                appliedRef.document(studentUID + "---" + jobID).update(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(view.getContext(), "Status Updated", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(view.getContext(), "FAILED!!!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
