@@ -185,8 +185,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:text="Accept"
-                android:textColor="@color/gold" />
+                android:textColor="@color/background_color" />
         </LinearLayout>
+
 
 
     </LinearLayout>

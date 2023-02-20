@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -46,16 +49,46 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
         db = FirebaseFirestore.getInstance();
 
         String studentUID = applied.userID;
+        int jobID = applied.jobID;
+        String status = applied.status;
 
         user = auth.getCurrentUser();
         userId = user.getUid();
         CollectionReference appliedRef = db.collection("Applied");
+
+        appliedRef.document(studentUID + "---" + jobID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.getResult().exists()){
+                    String status_str = task.getResult().getString("Status");
+                    if (status_str.equals("Rejected")){
+                        holder.rejectBtn.setBackgroundColor(holder.rejectBtn.getResources().getColor(R.color.gold));
+                        holder.acceptBtn.setBackgroundColor(holder.acceptBtn.getResources().getColor(R.color.gray));
+                    }
+                    else if (status_str.equals("Pending")){
+                        holder.rejectBtn.setBackgroundColor(holder.rejectBtn.getResources().getColor(R.color.gray));
+                        holder.acceptBtn.setBackgroundColor(holder.acceptBtn.getResources().getColor(R.color.gray));
+                    }
+                    else if (status_str.equals("Accepted")){
+                        holder.rejectBtn.setBackgroundColor(holder.rejectBtn.getResources().getColor(R.color.gray));
+                        holder.acceptBtn.setBackgroundColor(holder.acceptBtn.getResources().getColor(R.color.gold));
+                    }
+                    else {
+                        holder.rejectBtn.setBackgroundColor(holder.rejectBtn.getResources().getColor(R.color.gold));
+                        holder.acceptBtn.setBackgroundColor(holder.acceptBtn.getResources().getColor(R.color.gold));
+                    }
+                }
+            }
+        });
+
         holder.rejectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
                                                     String status = "Rejected";
 
-                                                    int jobID = applied.jobID;
+                                                    holder.rejectBtn.setBackgroundColor(holder.rejectBtn.getResources().getColor(R.color.gold));
+                                                    holder.acceptBtn.setBackgroundColor(holder.acceptBtn.getResources().getColor(R.color.gray));
+
                                                     Map<String, Object> applied = new HashMap<>();
                                                     applied.put("Status", status);
 
@@ -77,7 +110,10 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
             @Override
             public void onClick(View view) {
                 String status = "Accepted";
-                int jobID = applied.jobID;
+
+                holder.rejectBtn.setBackgroundColor(holder.rejectBtn.getResources().getColor(R.color.gray));
+                holder.acceptBtn.setBackgroundColor(holder.acceptBtn.getResources().getColor(R.color.gold));
+
                 Map<String, Object> applied = new HashMap<>();
                 applied.put("Status", status);
 
@@ -124,6 +160,7 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
             acceptBtn = itemView.findViewById(R.id.acceptBtn);
 
             appliedCard = itemView.findViewById(R.id.jobCard);
+
 
         }
     }
