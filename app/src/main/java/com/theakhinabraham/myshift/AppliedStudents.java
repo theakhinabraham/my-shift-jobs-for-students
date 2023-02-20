@@ -2,7 +2,6 @@ package com.theakhinabraham.myshift;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,8 +33,6 @@ public class AppliedStudents extends AppCompatActivity {
         int job_id = i.getIntExtra("jobIdDisplay", 250);
         status = i.getStringExtra("status");
 
-        //TODO: RETYPE QUERY
-        Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
         Query query = db.collection("Applied").whereEqualTo("jobID", job_id).orderBy("jobID");
 
         FirestoreRecyclerOptions<Applied> options = new FirestoreRecyclerOptions.Builder<Applied>()
@@ -75,6 +72,5 @@ public class AppliedStudents extends AppCompatActivity {
         userId = user.getUid();
 
         setUpRecyclerView();
-        //TODO: REJECT/ACCEPT APPLICANT
     }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -13,10 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAdapter.MyViewHolder> {
 
@@ -44,14 +50,27 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
         userId = user.getUid();
         CollectionReference appliedRef = db.collection("Applied");
         holder.rejectBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String status = "Rejected";
-//                Intent i = new Intent(view.getContext(), AppliedStudents.class);
-//                i.putExtra("Status", status);
-                
-            }
-        });
+                                                @Override
+                                                public void onClick(View view) {
+                                                    String status = "Rejected";
+
+                                                    Map<String, Object> applied = new HashMap<>();
+                                                    applied.put("Status", status);
+
+                                                    //TODO: READ DOCUMENT ID TO CHANGE STATUS
+                                                    appliedRef.document().update(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            Toast.makeText(view.getContext(), "Status Updated", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(view.getContext(), "FAILED!!!", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                }
+                                            });
 
         holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override

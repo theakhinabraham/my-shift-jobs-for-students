@@ -121,11 +121,11 @@ public class ApplyJob extends AppCompatActivity {
                                     applied.put("salary", salary_display);
                                     applied.put("time", time_display);
                                     applied.put("address", locality_display);
+                                    String appliedId = userId + "---" + job_id_display;
 
                                     //MESSAGE DATA
                                     applied.put("message", message_string);
-
-                                    String appliedId = userId + "---" + job_id_display;
+                                    applied.put("appliedID", appliedId);
                                     appliedDB.document(appliedId).set(applied).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
