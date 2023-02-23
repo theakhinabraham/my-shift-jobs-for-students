@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -107,25 +106,24 @@ public class NewJob extends AppCompatActivity {
                     job.put("userID", userId);
                     job.put("isJob", true);
                     job.put("time", nj_time);
+                    String jobMainID = userId + "---" + numberCount;
+                    job.put("jobMainID", jobMainID);
 
-                    // Add a new document with a generated ID
-                    db.collection("Jobs")
-                            .add(job)
-                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(NewJob.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(NewJob.this, CompanyHome.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(NewJob.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                    db.collection("Jobs").document(jobMainID).set(job).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(NewJob.this, "Data saved Successfully!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(NewJob.this, CompanyHome.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(NewJob.this, "Please try again!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 }
             }
         });
