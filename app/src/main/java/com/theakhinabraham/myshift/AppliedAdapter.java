@@ -50,7 +50,7 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<Applied, AppliedAda
 
         String studentUID = applied.userID;
         int jobID = applied.jobID;
-        String status = applied.status;
+        String status = applied.Status;
 
         user = auth.getCurrentUser();
         userId = user.getUid();

@@ -22,7 +22,7 @@ public class ViewApplicationAdapter extends FirestoreRecyclerAdapter<Applied, Vi
         holder.showJob.setText(applied.role);
         holder.showSalary.setText(applied.salary);
         holder.showLocality.setText(applied.address);
-        holder.showStatus.setText(applied.status);
+        holder.showStatus.setText(applied.Status);
         holder.showHours.setText(applied.time);
         holder.showJobId.setText(String.valueOf(applied.jobID));
     }

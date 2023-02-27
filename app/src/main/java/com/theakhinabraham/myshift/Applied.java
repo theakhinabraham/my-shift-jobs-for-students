@@ -2,8 +2,9 @@ package com.theakhinabraham.myshift;
 
 public class Applied {
 
-    String status, address, age, education, fullName, locality, message, role, salary, time, username, userID;
+    String address, age, education, fullName, locality, message, role, salary, time, username, userID;
     int jobID;
+    String Status;
 
     public Applied(String userID) {
         this.userID = userID;
@@ -20,13 +21,6 @@ public class Applied {
     public Applied() {
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getAddress() {
         return address;
@@ -116,8 +110,16 @@ public class Applied {
         this.jobID = jobID;
     }
 
-    public Applied(String status, String address, String age, String education, String fullName, String locality, String message, String role, String salary, String time, String username, int jobID) {
-        this.status = status;
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public Applied(String Status, String address, String age, String education, String fullName, String locality, String message, String role, String salary, String time, String username, int jobID) {
+        this.Status = Status;
         this.address = address;
         this.age = age;
         this.education = education;
